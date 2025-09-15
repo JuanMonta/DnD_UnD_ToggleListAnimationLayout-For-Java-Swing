@@ -17,18 +17,17 @@ Aquí puedes ver cómo los sub-ítems se muestran y ocultan con una animación f
 ### Arrastrar y Soltar para Reordenar
 Observa la facilidad para reordenar ítems y sub-ítems. Los demás elementos se mueven suavemente para hacer espacio.
 
-
-# Demostración arrastrar y soltar Items.
+#### Demostración arrastrar y soltar Items.
 ![Demostración de Arrastrar y Soltar Items 01](https://github.com/JuanMonta/DnD_UnD_ToggleListAnimationLayout-For-Java-Swing/blob/master/gifs/AnimationItemDnD01.gif?raw=true)
 
-# Demostración arrastrar y soltar Items con Sub-Items expandidos.
+#### Demostración arrastrar y soltar Items con Sub-Items expandidos.
 ![Demostración de Arrastrar y Soltar Items 02](https://github.com/JuanMonta/DnD_UnD_ToggleListAnimationLayout-For-Java-Swing/blob/master/gifs/AnimationItemDnD02.gif?raw=true)
 
-# Demostración arrastrar y soltar Sub-Items dentro de un mismo Item.
-![Demostración de Arrastrar y Soltar Sub-Items 01](https://github.com/JuanMonta/DnD_UnD_ToggleListAnimationLayout-For-Java-Swing/blob/master/gifs/AnimationItemDnD01.gif?raw=true)
+#### Demostración arrastrar y soltar Sub-Items dentro de un mismo Item.
+![Demostración de Arrastrar y Soltar Sub-Items 01](https://github.com/JuanMonta/DnD_UnD_ToggleListAnimationLayout-For-Java-Swing/blob/master/gifs/AnimationSubItemDnD01.gif?raw=true)
 
-# Demostración arrastrar y soltar Sub-Items entre diferentes Items.
-![Demostración de Arrastrar y Soltar Sub-Items 02](https://github.com/JuanMonta/DnD_UnD_ToggleListAnimationLayout-For-Java-Swing/blob/master/gifs/AnimationItemDnD02.gif?raw=true)
+#### Demostración arrastrar y soltar Sub-Items entre diferentes Items.
+![Demostración de Arrastrar y Soltar Sub-Items 02](https://github.com/JuanMonta/DnD_UnD_ToggleListAnimationLayout-For-Java-Swing/blob/master/gifs/AnimationSubItemDnD02.gif?raw=true)
 
 ---
 
