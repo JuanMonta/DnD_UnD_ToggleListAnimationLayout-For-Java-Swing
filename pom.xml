@@ -11,12 +11,7 @@
         <maven.compiler.target>18</maven.compiler.target>
     </properties>
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.json/json -->
-        <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>20240303</version>
-        </dependency>
+       
         <!-- https://mvnrepository.com/artifact/com.miglayout/miglayout-swing -->
         <dependency>
             <groupId>com.miglayout</groupId>
@@ -29,34 +24,8 @@
             <artifactId>timingframework</artifactId>
             <version>1.0</version>
         </dependency>
-        <!-- LIBRERIAS EN LOCAL INSTALLAS A PARTIR DE UN .JAR -->
-        <dependency>
-            <groupId>rojerusanfull</groupId>
-            <artifactId>rojerusan</artifactId>
-            <version>1.0</version>
-        </dependency>
-        <!--....................................................................-->
-        <!-- PARA AÑADIR IMAGENES SVG COMO ICONOS -->
-        <dependency>
-            <groupId>com.formdev</groupId>
-            <artifactId>flatlaf-extras</artifactId>
-            <version>3.4.1</version>
-            <type>jar</type>
-        </dependency>
-        <dependency>
-            <groupId>com.formdev</groupId>
-            <artifactId>flatlaf</artifactId>
-            <version>3.4.1</version>
-            <type>jar</type>
-        </dependency>
-        <!-- ............................................................... -->
-        <!-- https://xmlgraphics.apache.org/batik/download.html -->
-        <dependency>
-            <groupId>org.apache.xmlgraphics</groupId>
-            <artifactId>batik-all</artifactId>
-            <version>1.17</version>
-            <type>jar</type>
-        </dependency>
+      
+        
     </dependencies>
     <name>TestComponents07_ToggleList_ItemAnimation8</name>
 </project>
