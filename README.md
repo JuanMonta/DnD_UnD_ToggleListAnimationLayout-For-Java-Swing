@@ -60,7 +60,7 @@ public class MyMyItemComponent extends Item {
 
 //=======PARA CREAR EL MODELO DE SUB-ITEM===========
 import AnimationLayout.Item.SubItem;
-// Item extiende de JPanel
+// Item.SubItem extiende de JPanel
 public class MySubMyItemComponent extends Item.SubItem {
 
 }
