@@ -17,8 +17,11 @@ Aquí puedes ver cómo los sub-ítems se muestran y ocultan con una animación f
 ### Arrastrar y Soltar para Reordenar
 Observa la facilidad para reordenar ítems y sub-ítems. Los demás elementos se mueven suavemente para hacer espacio.
 
-![Demostración de Arrastrar y Soltar](https://via.placeholder.com/600x300.png?text=REEMPLAZAR+CON+GIF+DE+DRAG+AND+DROP)
-*(Pendiente de reemplazar la imagen de arriba con un GIF del componente en acción)*
+![Demostración de Arrastrar y Soltar Items](https://github.com/JuanMonta/DnD_UnD_ToggleListAnimationLayout-For-Java-Swing/blob/master/gifs/AnimationItemDnD01.gif?raw=true)
+
+(https://github.com/JuanMonta/DnD_UnD_ToggleListAnimationLayout-For-Java-Swing/blob/master/gifs/AnimationItemDnD02.gif?raw=true)
+
+![Demostración de Arrastrar y Soltar Sub-Items](https://github.com/JuanMonta/DnD_UnD_ToggleListAnimationLayout-For-Java-Swing/blob/master/gifs/AnimationItemDnD01.gif?raw=true)
 
 ---
 
