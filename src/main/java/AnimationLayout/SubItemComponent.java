@@ -81,18 +81,13 @@ public class SubItemComponent extends Item.SubItem {
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(448, 93));
-        setLayout(null);
 
         lbTitle.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         lbTitle.setForeground(new java.awt.Color(99, 98, 98));
         lbTitle.setText("SubItem Title");
-        add(lbTitle);
-        lbTitle.setBounds(90, 10, 111, 19);
 
         lbSubTitle.setForeground(new java.awt.Color(99, 98, 98));
         lbSubTitle.setText("SubItem Description");
-        add(lbSubTitle);
-        lbSubTitle.setBounds(90, 30, 111, 16);
 
         btn_UP.setText("UP");
         btn_UP.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -100,8 +95,6 @@ public class SubItemComponent extends Item.SubItem {
                 btn_UPMouseClicked(evt);
             }
         });
-        add(btn_UP);
-        btn_UP.setBounds(230, 10, 72, 23);
 
         btn_DOWN.setText("DOWN");
         btn_DOWN.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -109,38 +102,24 @@ public class SubItemComponent extends Item.SubItem {
                 btn_DOWNMouseClicked(evt);
             }
         });
-        add(btn_DOWN);
-        btn_DOWN.setBounds(310, 10, 72, 23);
 
         lb_SubItemIndex.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lb_SubItemIndex.setText("0");
-        add(lb_SubItemIndex);
-        lb_SubItemIndex.setBounds(50, 10, 30, 16);
 
         lbHxHy.setForeground(new java.awt.Color(99, 98, 98));
         lbHxHy.setText("Hy");
-        add(lbHxHy);
-        lbHxHy.setBounds(230, 70, 111, 16);
 
         lbWeidth.setForeground(new java.awt.Color(99, 98, 98));
         lbWeidth.setText("W:000");
-        add(lbWeidth);
-        lbWeidth.setBounds(10, 67, 32, 16);
 
         lbHeigth.setForeground(new java.awt.Color(99, 98, 98));
         lbHeigth.setText("H:000");
-        add(lbHeigth);
-        lbHeigth.setBounds(10, 50, 30, 16);
 
         lbHashCode.setForeground(new java.awt.Color(99, 98, 98));
         lbHashCode.setText("hashCode: ");
-        add(lbHashCode);
-        lbHashCode.setBounds(90, 50, 111, 16);
 
         lbLocation.setForeground(new java.awt.Color(99, 98, 98));
         lbLocation.setText("LctOnScrn: ");
-        add(lbLocation);
-        lbLocation.setBounds(90, 67, 111, 16);
 
         btn_DELETE.setText("DELETE");
         btn_DELETE.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -148,8 +127,6 @@ public class SubItemComponent extends Item.SubItem {
                 btn_DELETEMouseClicked(evt);
             }
         });
-        add(btn_DELETE);
-        btn_DELETE.setBounds(353, 67, 72, 23);
 
         jProgressBar1.setBackground(new java.awt.Color(255, 255, 255));
         jProgressBar1.setForeground(new java.awt.Color(51, 153, 0));
@@ -168,8 +145,65 @@ public class SubItemComponent extends Item.SubItem {
                 jProgressBar1MouseReleased(evt);
             }
         });
-        add(jProgressBar1);
-        jProgressBar1.setBounds(15, 10, 20, 20);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addComponent(lb_SubItemIndex, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbSubTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addComponent(btn_UP)
+                .addGap(8, 8, 8)
+                .addComponent(btn_DOWN))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(lbHeigth)
+                .addGap(50, 50, 50)
+                .addComponent(lbHashCode, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(lbWeidth)
+                .addGap(48, 48, 48)
+                .addComponent(lbLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(lbHxHy, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(btn_DELETE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lb_SubItemIndex)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbTitle)
+                        .addGap(1, 1, 1)
+                        .addComponent(lbSubTitle))
+                    .addComponent(btn_UP)
+                    .addComponent(btn_DOWN))
+                .addGap(4, 4, 4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbHeigth)
+                    .addComponent(lbHashCode))
+                .addGap(1, 1, 1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbWeidth)
+                    .addComponent(lbLocation)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(lbHxHy))
+                    .addComponent(btn_DELETE)))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_UPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_UPMouseClicked
