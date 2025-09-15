@@ -49,35 +49,92 @@ Este es un proyecto de Maven, por lo que la forma más fácil de usarlo es añad
 ```
 
 ### Ejemplo de Código
-Crea y customiza el diseño de tu propio modelo de Item.
+Crea y customiza el diseño de tu propio modelo de Item y subItem.
+```java
+//=======PARA CREAR EL MODELO DE ITEM===========
+import AnimationLayout.Item;
+// Item extiende de JPanel
+public class MyMyItemComponent extends Item {
+
+}
+
+//=======PARA CREAR EL MODELO DE SUB-ITEM===========
+import AnimationLayout.Item.SubItem;
+// Item extiende de JPanel
+public class MySubMyItemComponent extends Item.SubItem {
+
+}
+```
+Pobla la lista con tus ítems y sub-ítems customizados.
+
 ```java
 import AnimationLayout.ToggleListAnimationLayout;
-import AnimationLayout.Components.Item; // Asegúrate de que tus componentes hereden de esta clase
+import MyItemComponent; //Asegurate de que tu componente extienda de Item.
+import MySubItemComponent; //Asegurate de que tu componente extienda de Item.SubItem.
+
 
 // --- En tu clase de UI ---
 
-// 1. Crea una instancia del layout
+// 1. Una vez tengas tu instancia del layout en tu UI
 ToggleListAnimationLayout listLayout = new ToggleListAnimationLayout();
 
-// 2. Crea tus componentes de ítem (que deben extender de AnimationLayout.Components.Item)
-//    y sub-ítems (que deben extender de AnimationLayout.Components.Item.SubItem)
-ItemComponent item1 = new ItemComponent("ID-1", "Configuración General");
-ItemComponent item2 = new ItemComponent("ID-2", "Perfil de Usuario");
+// 2. Crea tus componentes de ítem (que deben extender de AnimationLayout.Item)
+//    Añadele informacion (opcional) a tu componente con los metodos incluidos 
+//    al exteder la clase Item.
+MyItemComponent itemComponent1 = new MyItemComponent();
+itemComponent1.setItemId("1");
+itemComponent1.setItemTitle("Item 01");
+itemComponent1.setItemSubTitle("SubTittle 01");
+// 3. Crea tus subItems a partir de tu componente (que deben extender de AnimationLayout.Item.SubItem)
+//    Añadele informacion (opcional) a tu componente con los metodos incluidos 
+//    al exteder la clase Item.SubItem.
+MySubItemComponent subItemComponent11 = new MySubItemComponent();
+subItemComponent11.setSubItemId("11");
+subItemComponent11.setSubItemTitle("SubItem 11");
+subItemComponent11.setSubItemSubTitle("SubItemTitle 11");
 
-SubItemComponent subItem2_1 = new SubItemComponent("SUB-ID-2-1", "Cambiar nombre");
-SubItemComponent subItem2_2 = new SubItemComponent("SUB-ID-2-2", "Cambiar avatar");
-item2.addSubItem(subItem2_1);
-item2.addSubItem(subItem2_2);
+MySubItemComponent subItemComponent12 = new MySubItemComponent();
+subItemComponent12.setSubItemId("12");
+subItemComponent12.setSubItemTitle("SubItem 12");
+        subItemComponent12.setSubItemSubTitle("SubItemTitle 12");
 
-ItemComponent item3 = new ItemComponent("ID-3", "Notificaciones");
+MySubItemComponent subItemComponent13 = new MySubItemComponent();
+subItemComponent13.setSubItemId("13");
+subItemComponent13.setSubItemTitle("SubItem 13");
+subItemComponent13.setSubItemSubTitle("SubItemTitle 13");
+// 4. Añade tus subItems a tu Item
+itemComponent1.addSubItem(subItemComponent11);
+itemComponent1.addSubItem(subItemComponent12);
+itemComponent1.addSubItem(subItemComponent13);
 
-// 3. Añade los ítems al layout
-listLayout.addItem(item1);
-listLayout.addItem(item2);
-listLayout.addItem(item3);
+//=======SIGUE CREANDO MÁS ITEMS Y SUBITEMS
+ItemComponent itemComponent2 = new ItemComponent();
+itemComponent2.setItemId("2");
+itemComponent2.setItemTitle("Item 02");
+itemComponent2.setItemSubTitle("SubTittle 02");
 
-// 4. Añade el layout a tu JFrame o JPanel principal
-miPanelPrincipal.add(listLayout, "grow, push"); // Usando MigLayout, por ejemplo
+SubItemComponent subItemComponent2 = new SubItemComponent();
+subItemComponent2.setSubItemId("21");
+subItemComponent2.setSubItemTitle("SubItem 21");
+subItemComponent2.setSubItemSubTitle("SubItemTitle 21");
+
+itemComponent2.addSubItem(subItemComponent2);
+        
+//Los items pueden estar vacios
+ItemComponent itemComponent3 = new ItemComponent();
+itemComponent3.setItemId("3");
+itemComponent3.setItemTitle("Item 03");
+itemComponent3.setItemSubTitle("SubTittle 03");
+
+// 5. Crea un ArrayList<item>  donde guardar tus items
+ArrayList<AnimationLayout.Item> listaItems = new ArrayList();
+listaItems.add(itemComponent1);
+listaItems.add(itemComponent2);
+listaItems.add(itemComponent3);
+
+// 6. Agrega los items al layout ToggleListAnimationLayout 
+// usando el método .renderItems(...)
+listLayout.renderItems(listaItems);
 ```
 
 ---
