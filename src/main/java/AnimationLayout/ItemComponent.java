@@ -17,6 +17,7 @@ public class ItemComponent extends Item {
     public ItemComponent() {
         initComponents();
         this.lb_HashCode.setText("hashCode: " + this.hashCode());
+        this.jProgressBar1.setUI(new CircularProgressBarUI());
         this.colocarSize(this.getPreferredSize().width, this.getPreferredSize().height);
         this.dragAndDropSetAnimationTime(1000);
     }
@@ -76,7 +77,8 @@ public class ItemComponent extends Item {
     @Override
     public void dragAndDropAnimationTimeCurrentValue(float animatedVal) {
         //System.out.println("Test.ItemComponent.dragDropAnimationTimeCurrentValue() "+animatedVal);
-        this.rSProgressCircle1.setValue((int)(animatedVal*100));
+        //this.rSProgressCircle1.setValue((int)(animatedVal*100));
+        this.jProgressBar1.setValue((int)(animatedVal*100));
     }
     
     
@@ -112,11 +114,11 @@ public class ItemComponent extends Item {
         lb_Parent = new javax.swing.JLabel();
         lb_ItemIndex = new javax.swing.JLabel();
         lb_Location = new javax.swing.JLabel();
-        rSProgressCircle1 = new rojerusan.RSProgressCircle();
         lb_Width = new javax.swing.JLabel();
         lb_Height = new javax.swing.JLabel();
         lb_HxHy = new javax.swing.JLabel();
         btn_DELETE = new javax.swing.JButton();
+        jProgressBar1 = new javax.swing.JProgressBar();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(448, 110));
@@ -142,7 +144,6 @@ public class ItemComponent extends Item {
             }
         });
 
-        toggleButton_ShowSubItems.setSelected(true);
         toggleButton_ShowSubItems.setText("SHOW");
         toggleButton_ShowSubItems.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -171,22 +172,6 @@ public class ItemComponent extends Item {
         lb_Location.setForeground(new java.awt.Color(99, 98, 98));
         lb_Location.setText("LctOnScrn: ");
 
-        rSProgressCircle1.setValue(100);
-        rSProgressCircle1.setStringPainted(false);
-        rSProgressCircle1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                rSProgressCircle1MouseDragged(evt);
-            }
-        });
-        rSProgressCircle1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                rSProgressCircle1MousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                rSProgressCircle1MouseReleased(evt);
-            }
-        });
-
         lb_Width.setForeground(new java.awt.Color(102, 102, 102));
         lb_Width.setText("W:000");
 
@@ -203,58 +188,72 @@ public class ItemComponent extends Item {
             }
         });
 
+        jProgressBar1.setBackground(new java.awt.Color(255, 255, 255));
+        jProgressBar1.setForeground(new java.awt.Color(102, 102, 255));
+        jProgressBar1.setValue(100);
+        jProgressBar1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jProgressBar1MouseDragged(evt);
+            }
+        });
+        jProgressBar1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jProgressBar1MousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jProgressBar1MouseReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(10, 10, 10)
+                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rSProgressCircle1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lb_ItemIndex, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lb_SubItemNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(lb_Title, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lb_SubTitle))
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addComponent(toggleButton_ShowSubItems))
+                    .addComponent(lb_HashCode, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_UP)
+                    .addComponent(btn_DOWN)))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lb_Height)
                     .addComponent(lb_Width))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lb_Parent, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lb_ItemIndex, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lb_SubItemNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(lb_Title, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lb_SubTitle))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(91, 91, 91)
-                                .addComponent(toggleButton_ShowSubItems))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(12, 12, 12)
-                                .addComponent(lb_HashCode, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btn_UP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btn_DOWN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lb_Parent, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lb_Location, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lb_HxHy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_DELETE)))
-                .addContainerGap(11, Short.MAX_VALUE))
+                        .addComponent(lb_Location, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(lb_HxHy, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(26, 26, 26)
+                .addComponent(btn_DELETE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(rSProgressCircle1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(10, 10, 10)
+                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(lb_ItemIndex)
@@ -274,19 +273,23 @@ public class ItemComponent extends Item {
                         .addComponent(btn_UP)
                         .addGap(6, 6, 6)
                         .addComponent(btn_DOWN)))
+                .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lb_Parent)
-                            .addComponent(lb_Height))
-                        .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lb_Location)
-                            .addComponent(lb_Width)
-                            .addComponent(lb_HxHy)))
+                        .addGap(2, 2, 2)
+                        .addComponent(lb_Height)
+                        .addGap(9, 9, 9)
+                        .addComponent(lb_Width))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lb_Parent)
+                        .addGap(6, 6, 6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lb_Location)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(lb_HxHy))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
                         .addComponent(btn_DELETE))))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -315,17 +318,17 @@ public class ItemComponent extends Item {
         }
     }//GEN-LAST:event_btn_DELETEMouseClicked
 
-    private void rSProgressCircle1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rSProgressCircle1MousePressed
-        this.ragAndDropInit();
-    }//GEN-LAST:event_rSProgressCircle1MousePressed
+    private void jProgressBar1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jProgressBar1MousePressed
+       this.dragAndDropInit();
+    }//GEN-LAST:event_jProgressBar1MousePressed
 
-    private void rSProgressCircle1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rSProgressCircle1MouseReleased
+    private void jProgressBar1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jProgressBar1MouseReleased
         this.dragAndDropCancel();
-    }//GEN-LAST:event_rSProgressCircle1MouseReleased
+    }//GEN-LAST:event_jProgressBar1MouseReleased
 
-    private void rSProgressCircle1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rSProgressCircle1MouseDragged
-       this.dragAndDropMouseDragged(evt);
-    }//GEN-LAST:event_rSProgressCircle1MouseDragged
+    private void jProgressBar1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jProgressBar1MouseDragged
+        this.dragAndDropMouseDragged(evt);
+    }//GEN-LAST:event_jProgressBar1MouseDragged
 
 
 
@@ -333,6 +336,7 @@ public class ItemComponent extends Item {
     private javax.swing.JButton btn_DELETE;
     private javax.swing.JButton btn_DOWN;
     private javax.swing.JButton btn_UP;
+    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JLabel lb_HashCode;
     private javax.swing.JLabel lb_Height;
     private javax.swing.JLabel lb_HxHy;
@@ -343,7 +347,6 @@ public class ItemComponent extends Item {
     private javax.swing.JLabel lb_SubTitle;
     private javax.swing.JLabel lb_Title;
     private javax.swing.JLabel lb_Width;
-    private rojerusan.RSProgressCircle rSProgressCircle1;
     private javax.swing.JToggleButton toggleButton_ShowSubItems;
     // End of variables declaration//GEN-END:variables
 

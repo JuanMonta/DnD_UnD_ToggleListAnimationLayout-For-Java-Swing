@@ -11,7 +11,12 @@
         <maven.compiler.target>18</maven.compiler.target>
     </properties>
     <dependencies>
-       
+        <!-- LIBRERIAS EN LOCAL INSTALLAS A PARTIR DE UN .JAR -->
+        <dependency>
+            <groupId>rojerusanfull</groupId>
+            <artifactId>rojerusan</artifactId>
+            <version>1.0</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/com.miglayout/miglayout-swing -->
         <dependency>
             <groupId>com.miglayout</groupId>

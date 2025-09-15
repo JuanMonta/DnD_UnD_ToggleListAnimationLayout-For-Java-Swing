@@ -178,7 +178,7 @@ public abstract class Item extends JPanel implements DnD_AnimationTimeCurrentVal
 
     }
 
-    public void ragAndDropInit() {
+    public void dragAndDropInit() {
         this.itemDragAndDropActivar.dragAndDropInit("ITEM");
     }
 

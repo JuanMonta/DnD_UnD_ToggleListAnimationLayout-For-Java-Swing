@@ -15,6 +15,7 @@ public class TestListaMoverItems extends javax.swing.JFrame implements UnD_Lista
         UnD_ListaManipulador.setVerComponentesInterface(this);
         ToggleListAnimationLayout.setVerComponentesInterface(this);
         DnD_ManipuladorItems.setVerComponentesInterface(this);
+       
         this.lista = new ArrayList<>();
         //----------------------------------------------------------------------
         ItemComponent itemComponent1 = new ItemComponent();
