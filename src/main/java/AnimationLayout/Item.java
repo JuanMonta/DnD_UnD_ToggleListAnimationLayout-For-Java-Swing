@@ -70,13 +70,21 @@ public abstract class Item extends JPanel implements DnD_AnimationTimeCurrentVal
     /**
      * Para colocarle un ID al Item. Default = ""
      */
-    private String itemId = "";
+    private String itemId = "", itemTitle = "", itemSubTitle = "", itemInfo01 = "", itemInfo02 = "", itemInfo03 = "";
     private int itemIndex = -1;
 
     public Item() {
         this.subItemsList = new ArrayList<>();
         this.toggleList = new ToggleList();
         this.itemDragAndDropActivar = new DnD_Activar(Item.this, this);
+    }
+
+    public int getItemIndex() {
+        return itemIndex;
+    }
+
+    void setItemIndex(int itemIndex) {
+        this.itemIndex = itemIndex;
     }
 
     /**
@@ -97,12 +105,44 @@ public abstract class Item extends JPanel implements DnD_AnimationTimeCurrentVal
         return itemId;
     }
 
-    public int getItemIndex() {
-        return itemIndex;
+    public String getItemTitle() {
+        return itemTitle;
     }
 
-    void setItemIndex(int itemIndex) {
-        this.itemIndex = itemIndex;
+    public void setItemTitle(String itemTitle) {
+        this.itemTitle = itemTitle;
+    }
+
+    public String getItemSubTitle() {
+        return itemSubTitle;
+    }
+
+    public void setItemSubTitle(String itemSubTitle) {
+        this.itemSubTitle = itemSubTitle;
+    }
+
+    public String getItemInfo01() {
+        return itemInfo01;
+    }
+
+    public void setItemInfo01(String itemInfo01) {
+        this.itemInfo01 = itemInfo01;
+    }
+
+    public String getItemInfo02() {
+        return itemInfo02;
+    }
+
+    public void setItemInfo02(String itemInfo02) {
+        this.itemInfo02 = itemInfo02;
+    }
+
+    public String getItemInfo03() {
+        return itemInfo03;
+    }
+
+    public void setItemInfo03(String itemInfo03) {
+        this.itemInfo03 = itemInfo03;
     }
 
     /**
@@ -165,9 +205,9 @@ public abstract class Item extends JPanel implements DnD_AnimationTimeCurrentVal
     }
 
     public void itemAdded() {
-    
+
     }
-    
+
     /**
      * Se lanza cada que un SubItem es agregado al Item.
      *
@@ -295,6 +335,7 @@ public abstract class Item extends JPanel implements DnD_AnimationTimeCurrentVal
         return "Item" + this.itemId + "( " + stringBuilder + ")";
     }
 
+    //##########################################################################
     /**
      * Para extender a una clase JPanel para tomarlo como subItem en el layout
      * {@link ToggleListAnimationLayout}. Ejm: public class miPanel extends
@@ -391,8 +432,16 @@ public abstract class Item extends JPanel implements DnD_AnimationTimeCurrentVal
         /**
          * Para colocarle un ID al subItem. Default = ""
          */
-        private String subItemId = "";
+        private String subItemId = "", subItemTitle = "", subItemSubTitle = "", subItemInfo01 = "", subItemInfo02 = "", subItemInfo03 = "";
         private int subItemIndex = -1;
+
+        public int getSubItemIndex() {
+            return subItemIndex;
+        }
+
+        void setSubItemIndex(int subItemIndex) {
+            this.subItemIndex = subItemIndex;
+        }
 
         /**
          * Obtener el ID asignado al subItem.
@@ -412,14 +461,46 @@ public abstract class Item extends JPanel implements DnD_AnimationTimeCurrentVal
             this.subItemId = subItemId;
         }
 
-        public int getSubItemIndex() {
-            return subItemIndex;
+        public String getSubItemTitle() {
+            return subItemTitle;
         }
 
-        void setSubItemIndex(int subItemIndex) {
-            this.subItemIndex = subItemIndex;
+        public void setSubItemTitle(String subItemTitle) {
+            this.subItemTitle = subItemTitle;
         }
 
+        public String getSubItemSubTitle() {
+            return subItemSubTitle;
+        }
+
+        public void setSubItemSubTitle(String subItemSubTitle) {
+            this.subItemSubTitle = subItemSubTitle;
+        }
+
+        public String getSubItemInfo01() {
+            return subItemInfo01;
+        }
+
+        public void setSubItemInfo01(String subItemInfo01) {
+            this.subItemInfo01 = subItemInfo01;
+        }
+
+        public String getSubItemInfo02() {
+            return subItemInfo02;
+        }
+
+        public void setSubItemInfo02(String subItemInfo02) {
+            this.subItemInfo02 = subItemInfo02;
+        }
+
+        public String getSubItemInfo03() {
+            return subItemInfo03;
+        }
+
+        public void setSubItemInfo03(String subItemInfo03) {
+            this.subItemInfo03 = subItemInfo03;
+        }
+        
         protected void onAdded() {
 
         }

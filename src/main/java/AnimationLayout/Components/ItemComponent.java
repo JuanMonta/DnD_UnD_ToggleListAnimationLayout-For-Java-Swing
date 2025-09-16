@@ -12,9 +12,6 @@ import javax.swing.SwingUtilities;
  */
 public class ItemComponent extends Item {
 
-    private String itemTitle = "", itemSubTitle = "", itemInfo01 = "", itemInfo02 = "", itemInfo03 = "";
-
-    private int itemIndex = 0;
 
     public ItemComponent() {
         initComponents();
@@ -24,56 +21,11 @@ public class ItemComponent extends Item {
         this.dragAndDropSetAnimationTime(1000);
     }
 
-    public void setItemIndex(int index) {
-        this.itemIndex = index;
-        this.lb_ItemIndex.setText(String.valueOf(index));
-    }
-
-    public void setItemTitle(String itemTitle) {
-        this.itemTitle = itemTitle;
-        this.lb_Title.setText(this.getItemTitle());
-    }
-
-    public void setItemSubTitle(String itemSubTitle) {
-        this.itemSubTitle = itemSubTitle;
-        this.lb_SubTitle.setText(this.getItemSubTitle());
-    }
-
-    public void setItemInfo01(String itemInfo01) {
-        this.itemInfo01 = itemInfo01;
-    }
-
-    public void setItemInfo02(String itemInfo02) {
-        this.itemInfo02 = itemInfo02;
-    }
-
-    public void setItemInfo03(String itemInfo03) {
-        this.itemInfo03 = itemInfo03;
-    }
-
-    public String getItemTitle() {
-        return itemTitle;
-    }
-
-    public String getItemSubTitle() {
-        return itemSubTitle;
-    }
-
-    public String getItemInfo01() {
-        return itemInfo01;
-    }
-
-    public String getItemInfo02() {
-        return itemInfo02;
-    }
-
-    public String getItemInfo03() {
-        return itemInfo03;
-    }
-
     @Override
     public void itemAdded() {
         this.lb_ItemIndex.setText(""+this.getItemIndex());
+        this.lb_Title.setText(this.getItemTitle());
+        this.lb_SubTitle.setText(this.getItemSubTitle());
     }
 
     @Override

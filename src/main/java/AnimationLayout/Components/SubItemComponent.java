@@ -1,65 +1,36 @@
 package AnimationLayout.Components;
 
 import AnimationLayout.Item;
+import AnimationLayout.ToggleListAnimationLayout;
 import AnimationLayout.UnD_MovimientoDireccion;
 import java.awt.Point;
-import java.awt.event.MouseEvent;
 import javax.swing.SwingUtilities;
 
-
 /**
- * Componente que se usará y se identificará como un {@link Item.SubItem} para el layout
- * {@link ToggleListAnimationLayout}.
+ * Componente que se usará y se identificará como un {@link Item.SubItem} para
+ * el layout {@link ToggleListAnimationLayout}.
  */
 public class SubItemComponent extends Item.SubItem {
 
-    private boolean dragReady = false;
-    private MouseEvent mouseEventMousePressed;
-
-     private String subItemTitle = "", subItemSubTitle = "", subItemInfo01 = "", subItemInfo02 = "", subItemInfo03 = "";
-   
     public SubItemComponent() {
         initComponents();
         this.jProgressBar1.setUI(new CircularProgressBarUI());
         this.lbHashCode.setText("" + this.hashCode());
-       
-    }
-
-    public void setSubItemTitle(String subItemTitle) {
-        this.subItemTitle = subItemTitle;
-        this.lbTitle.setText(this.subItemTitle);
-    }
-
-    public void setSubItemSubTitle(String subItemSubTitle) {
-        this.subItemSubTitle = subItemSubTitle;
-        this.lbSubTitle.setText(this.subItemSubTitle);
-    }
-
-    public void setSubItemInfo01(String subItemInfo01) {
-        this.subItemInfo01 = subItemInfo01;
-    }
-
-    public void setSubItemInfo02(String subItemInfo02) {
-        this.subItemInfo02 = subItemInfo02;
-    }
-
-    public void setSubItemInfo03(String subItemInfo03) {
-        this.subItemInfo03 = subItemInfo03;
     }
 
     @Override
     public void onAdded() {
-        this.lb_SubItemIndex.setText(this.getSubItemIndex()+"");
+        this.lb_SubItemIndex.setText(this.getSubItemIndex() + "");
+        this.lbTitle.setText(this.getSubItemTitle());
+        this.lbSubTitle.setText(this.getSubItemSubTitle());
     }
-    
-    
-    
+
     @Override
     public void dragAndDropAnimationTimeCurrentValue(float animatedVal) {
-     //this.rSProgressCircle1.setValue((int)(animatedVal*100));
-     this.jProgressBar1.setValue((int)(animatedVal*100));
+        //this.rSProgressCircle1.setValue((int)(animatedVal*100));
+        this.jProgressBar1.setValue((int) (animatedVal * 100));
     }
-    
+
     private void mirarLocationOnScreenComponente() {
         if (SubItemComponent.this.isShowing()) {
             Point p = this.getLocationOnScreen();
@@ -223,13 +194,13 @@ public class SubItemComponent extends Item.SubItem {
     }//GEN-LAST:event_btn_UPMouseClicked
 
     private void btn_DOWNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_DOWNMouseClicked
-         if (SwingUtilities.isLeftMouseButton(evt) && evt.getClickCount() == 1) {
+        if (SwingUtilities.isLeftMouseButton(evt) && evt.getClickCount() == 1) {
             this.moverSubItem(UnD_MovimientoDireccion.DOWN);
         }
     }//GEN-LAST:event_btn_DOWNMouseClicked
 
     private void btn_DELETEMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_DELETEMouseClicked
-      if (SwingUtilities.isLeftMouseButton(evt) && evt.getClickCount() == 1) {
+        if (SwingUtilities.isLeftMouseButton(evt) && evt.getClickCount() == 1) {
             deleteSubItem();
         }
     }//GEN-LAST:event_btn_DELETEMouseClicked
@@ -245,7 +216,6 @@ public class SubItemComponent extends Item.SubItem {
     private void jProgressBar1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jProgressBar1MouseDragged
         this.dragAndDropMouseDragged(evt);
     }//GEN-LAST:event_jProgressBar1MouseDragged
-                               
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
