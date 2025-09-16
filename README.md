@@ -78,14 +78,14 @@ Crea y customiza el diseño de tu propio modelo de Item y subItem.
 //=======PARA CREAR EL MODELO DE ITEM===========
 import AnimationLayout.Item;
 // Item extiende de JPanel
-public class MyMyItemComponent extends Item {
+public class MyItemComponent extends Item {
 
 }
 
 //=======PARA CREAR EL MODELO DE SUB-ITEM===========
 import AnimationLayout.Item.SubItem;
 // Item.SubItem extiende de JPanel
-public class MySubMyItemComponent extends Item.SubItem {
+public class MySubItemComponent extends Item.SubItem {
 
 }
 ```
@@ -144,7 +144,7 @@ subItemComponent2.setSubItemSubTitle("SubItemTitle 21");
 
 itemComponent2.addSubItem(subItemComponent2);
         
-//Los items pueden estar vacios
+//Los items pueden crearse sin necesariamente tener subItems
 ItemComponent itemComponent3 = new ItemComponent();
 itemComponent3.setItemId("3");
 itemComponent3.setItemTitle("Item 03");
