@@ -277,6 +277,8 @@ public class ToggleListAnimationLayout extends JComponent implements Serializabl
             item.setMovimientoListener(movimientoListener);
             item.setEliminacionListener(eliminacionListener);
             item.setToggleListLayout(this);
+            item.setItemIndex(i);
+            item.itemAdded();
             this.add(item);
             if (item.getSubItems() != null) {
                 boolean selected = item.getToggleList() != null && item.getToggleList().isShowing();

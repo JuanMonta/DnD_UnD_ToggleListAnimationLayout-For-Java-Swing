@@ -58,16 +58,6 @@ public abstract class ItemBlank extends Item {
 
     }
 
-    /**
-     * Se lanza cada que un SubItem es agregado al Item.
-     *
-     * @param subItemAdded
-     */
-    @Override
-    public void subItemAdded(SubItem subItemAdded) {
-
-    }
-
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         return "ItemBlank" + "( " + stringBuilder + ")";

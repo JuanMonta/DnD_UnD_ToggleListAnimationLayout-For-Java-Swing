@@ -71,6 +71,7 @@ public abstract class Item extends JPanel implements DnD_AnimationTimeCurrentVal
      * Para colocarle un ID al Item. Default = ""
      */
     private String itemId = "";
+    private int itemIndex = -1;
 
     public Item() {
         this.subItemsList = new ArrayList<>();
@@ -95,6 +96,15 @@ public abstract class Item extends JPanel implements DnD_AnimationTimeCurrentVal
     public String getItemId() {
         return itemId;
     }
+
+    public int getItemIndex() {
+        return itemIndex;
+    }
+
+    void setItemIndex(int itemIndex) {
+        this.itemIndex = itemIndex;
+    }
+
     /**
      * Clase donde se manejas los Items y SubItems
      */
@@ -109,7 +119,7 @@ public abstract class Item extends JPanel implements DnD_AnimationTimeCurrentVal
      *
      * @return
      */
-    public ToggleListAnimationLayout getToggleListLayout() {
+    ToggleListAnimationLayout getToggleListLayout() {
         return Item.toggleListLayout;
     }
 
@@ -119,14 +129,15 @@ public abstract class Item extends JPanel implements DnD_AnimationTimeCurrentVal
      *
      * @return
      */
-     ToggleList getToggleList() {
+    ToggleList getToggleList() {
         return this.toggleList;
     }
 
     public void toggleList() {
         this.getToggleList().setShowing(!this.getToggleList().isShowing(), true);
     }
-    public void toggleList(boolean setShowing, boolean animated){
+
+    public void toggleList(boolean setShowing, boolean animated) {
         this.getToggleList().setShowing(setShowing, animated);
     }
 
@@ -149,10 +160,14 @@ public abstract class Item extends JPanel implements DnD_AnimationTimeCurrentVal
      */
     public void addSubItems(List<Item.SubItem> subItems) {
         subItems.forEach(subItem -> {
-           this.addSubItem(subItem);
+            this.addSubItem(subItem);
         });
     }
 
+    public void itemAdded() {
+    
+    }
+    
     /**
      * Se lanza cada que un SubItem es agregado al Item.
      *
@@ -212,7 +227,7 @@ public abstract class Item extends JPanel implements DnD_AnimationTimeCurrentVal
      * @param selected determina si se oculta o se muestra los subItems del
      * Item.
      */
-    public void show(List<Component> components, float animated, boolean selected) {
+    void show(List<Component> components, float animated, boolean selected) {
         int width = (int) (100f * animated);
         int gap = (int) ((50 * (1f - (animated))));
         for (Component com : components) {
@@ -258,7 +273,7 @@ public abstract class Item extends JPanel implements DnD_AnimationTimeCurrentVal
      *
      * @param toggleListLayout
      */
-    public void setToggleListLayout(ToggleListAnimationLayout toggleListLayout) {
+    void setToggleListLayout(ToggleListAnimationLayout toggleListLayout) {
         this.toggleListLayout = toggleListLayout;
         getToggleList().addToggleListListener(new ToggleListAdapter() {
             @Override
@@ -304,7 +319,7 @@ public abstract class Item extends JPanel implements DnD_AnimationTimeCurrentVal
          *
          * @return
          */
-        public ToggleListAnimationLayout getToggleListLayout() {
+        ToggleListAnimationLayout getToggleListLayout() {
             return Item.toggleListLayout;
         }
 
@@ -338,7 +353,7 @@ public abstract class Item extends JPanel implements DnD_AnimationTimeCurrentVal
          *
          * @param listener
          */
-        public void setEliminacionListener(UnD_EliminacionListener listener) {
+        void setEliminacionListener(UnD_EliminacionListener listener) {
             this.eliminacionListener = listener;
         }
 
@@ -359,7 +374,7 @@ public abstract class Item extends JPanel implements DnD_AnimationTimeCurrentVal
          *
          * @param listener
          */
-        public void setMovimientoListener(UnD_MovimientoListener listener) {
+        void setMovimientoListener(UnD_MovimientoListener listener) {
             this.movimientoListener = listener;
         }
 
@@ -401,12 +416,12 @@ public abstract class Item extends JPanel implements DnD_AnimationTimeCurrentVal
             return subItemIndex;
         }
 
-        protected void setSubItemIndex(int subItemIndex) {
+        void setSubItemIndex(int subItemIndex) {
             this.subItemIndex = subItemIndex;
         }
-        
-        protected void onAdded(){
-            
+
+        protected void onAdded() {
+
         }
 
         @Override

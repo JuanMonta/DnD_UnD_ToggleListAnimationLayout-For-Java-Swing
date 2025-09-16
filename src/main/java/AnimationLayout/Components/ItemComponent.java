@@ -6,7 +6,6 @@ import AnimationLayout.UnD_MovimientoDireccion;
 import java.awt.Point;
 import javax.swing.SwingUtilities;
 
-
 /**
  * Componente que se usará y se identificará como un {@link Item} para el layout
  * {@link ToggleListAnimationLayout}.
@@ -15,7 +14,7 @@ public class ItemComponent extends Item {
 
     private String itemTitle = "", itemSubTitle = "", itemInfo01 = "", itemInfo02 = "", itemInfo03 = "";
 
-    private int itemIndex = 0; 
+    private int itemIndex = 0;
 
     public ItemComponent() {
         initComponents();
@@ -73,6 +72,11 @@ public class ItemComponent extends Item {
     }
 
     @Override
+    public void itemAdded() {
+        this.lb_ItemIndex.setText(""+this.getItemIndex());
+    }
+
+    @Override
     public void subItemAdded(Item.SubItem subItemAdded) {
         this.lb_SubItemNumber.setText("" + this.getSubItemsCount());
     }
@@ -81,10 +85,8 @@ public class ItemComponent extends Item {
     public void dragAndDropAnimationTimeCurrentValue(float animatedVal) {
         //System.out.println("Test.ItemComponent.dragDropAnimationTimeCurrentValue() "+animatedVal);
         //this.rSProgressCircle1.setValue((int)(animatedVal*100));
-        this.jProgressBar1.setValue((int)(animatedVal*100));
+        this.jProgressBar1.setValue((int) (animatedVal * 100));
     }
-    
-    
 
     private void mirarLocationOnScreenComponente() {
         if (ItemComponent.this.isShowing()) {
@@ -322,7 +324,7 @@ public class ItemComponent extends Item {
     }//GEN-LAST:event_btn_DELETEMouseClicked
 
     private void jProgressBar1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jProgressBar1MousePressed
-       this.dragAndDropInit();
+        this.dragAndDropInit();
     }//GEN-LAST:event_jProgressBar1MousePressed
 
     private void jProgressBar1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jProgressBar1MouseReleased
@@ -332,7 +334,6 @@ public class ItemComponent extends Item {
     private void jProgressBar1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jProgressBar1MouseDragged
         this.dragAndDropMouseDragged(evt);
     }//GEN-LAST:event_jProgressBar1MouseDragged
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
