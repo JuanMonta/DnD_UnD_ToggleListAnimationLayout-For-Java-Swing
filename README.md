@@ -29,6 +29,13 @@ Observa la facilidad para reordenar ítems y sub-ítems. Los demás elementos se
 #### Demostración arrastrar y soltar Sub-Items entre diferentes Items.
 ![Demostración de Arrastrar y Soltar Sub-Items 02](https://github.com/JuanMonta/DnD_UnD_ToggleListAnimationLayout-For-Java-Swing/blob/master/gifs/AnimationSubItemDnD02.gif?raw=true)
 
+Moviendo Sub-Items entre Items que 
+- No tienen su lista de Sub-Items expandida
+- Items sin Sub-Items
+- Item que no tenga Sub-Items pero aún así con el atributo de mostrar lista de Sub-Items expandida.
+![Demostración de Arrastrar y Soltar Sub-Items 03](https://github.com/JuanMonta/DnD_UnD_ToggleListAnimationLayout-For-Java-Swing/blob/master/gifs/AnimationSubItemDnD03.gif?raw=true)
+
+
 ---
 
 ## Características Principales
