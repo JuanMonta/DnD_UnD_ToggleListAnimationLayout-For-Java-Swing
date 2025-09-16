@@ -8,11 +8,19 @@ Es ideal para crear interfaces de usuario modernas, dinámicas e intuitivas en a
 
 ## Demostración
 
-### Expansión y Colapso de Ítems
+### Expansión y Colapso de Items
 Aquí puedes ver cómo los sub-ítems se muestran y ocultan con una animación fluida.
+![Demostración de Toggle Animado](https://github.com/JuanMonta/DnD_UnD_ToggleListAnimationLayout-For-Java-Swing/blob/master/gifs/AnimationItemShow.gif?raw=true)
 
-![Demostración de Toggle Animado](https://via.placeholder.com/600x300.png?text=REEMPLAZAR+CON+GIF+DE+ANIMACIÓN+DE+TOGGLE)
-*(Pendiente de reemplazar la imagen de arriba con un GIF del componente en acción)*
+### Reubicación de Items y SubItems con movimiento Arriba-Abajo
+Movimiento de Items.
+![Demostración de Movimiento Arriba Abajo Items ](https://github.com/JuanMonta/DnD_UnD_ToggleListAnimationLayout-For-Java-Swing/blob/master/gifs/AnimationItemUnD01.gif?raw=true)
+
+Movimiento de Sub-Items dentro de un mismo Item.
+![Demostración de Movimiento Arriba Abajo Items ](https://github.com/JuanMonta/DnD_UnD_ToggleListAnimationLayout-For-Java-Swing/blob/master/gifs/AnimationSubItemUnD01.gif?raw=true)
+
+Movimiento de Sub-Items entre diferentes Items.
+![Demostración de Movimiento Arriba Abajo Items ](https://github.com/JuanMonta/DnD_UnD_ToggleListAnimationLayout-For-Java-Swing/blob/master/gifs/AnimationSubItemUnD02.gif?raw=true)
 
 ### Arrastrar y Soltar para Reordenar
 Observa la facilidad para reordenar ítems y sub-ítems. Los demás elementos se mueven suavemente para hacer espacio.
