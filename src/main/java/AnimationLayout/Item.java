@@ -119,8 +119,15 @@ public abstract class Item extends JPanel implements DnD_AnimationTimeCurrentVal
      *
      * @return
      */
-    public ToggleList getToggleList() {
+     ToggleList getToggleList() {
         return this.toggleList;
+    }
+
+    public void toggleList() {
+        this.getToggleList().setShowing(!this.getToggleList().isShowing(), true);
+    }
+    public void toggleList(boolean setShowing, boolean animated){
+        this.getToggleList().setShowing(setShowing, animated);
     }
 
     /**
@@ -129,8 +136,10 @@ public abstract class Item extends JPanel implements DnD_AnimationTimeCurrentVal
      * @param subItem Item.SubItem a agregar a la lista.
      */
     public void addSubItem(Item.SubItem subItem) {
+        subItem.setSubItemIndex(this.subItemsList.size());
         this.subItemsList.add(subItem);
         this.subItemAdded(subItem);
+        subItem.onAdded();
     }
 
     /**
@@ -140,8 +149,7 @@ public abstract class Item extends JPanel implements DnD_AnimationTimeCurrentVal
      */
     public void addSubItems(List<Item.SubItem> subItems) {
         subItems.forEach(subItem -> {
-            this.subItemsList.add(subItem);
-            this.subItemAdded(subItem);
+           this.addSubItem(subItem);
         });
     }
 
@@ -369,6 +377,7 @@ public abstract class Item extends JPanel implements DnD_AnimationTimeCurrentVal
          * Para colocarle un ID al subItem. Default = ""
          */
         private String subItemId = "";
+        private int subItemIndex = -1;
 
         /**
          * Obtener el ID asignado al subItem.
@@ -386,6 +395,18 @@ public abstract class Item extends JPanel implements DnD_AnimationTimeCurrentVal
          */
         public void setSubItemId(String subItemId) {
             this.subItemId = subItemId;
+        }
+
+        public int getSubItemIndex() {
+            return subItemIndex;
+        }
+
+        protected void setSubItemIndex(int subItemIndex) {
+            this.subItemIndex = subItemIndex;
+        }
+        
+        protected void onAdded(){
+            
         }
 
         @Override
@@ -411,10 +432,9 @@ public abstract class Item extends JPanel implements DnD_AnimationTimeCurrentVal
 
         @Override
         public String toString() {
-        
-        return "(SubItem "+ this.subItemId +")";
-    }
-        
-        
+
+            return "(SubItem " + this.subItemId + ")";
+        }
+
     }
 }

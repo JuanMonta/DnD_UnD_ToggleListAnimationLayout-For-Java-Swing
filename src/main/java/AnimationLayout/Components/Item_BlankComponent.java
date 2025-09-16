@@ -1,5 +1,6 @@
-package AnimationLayout;
+package AnimationLayout.Components;
 
+import AnimationLayout.ItemBlank;
 import javax.swing.ImageIcon;
 
 

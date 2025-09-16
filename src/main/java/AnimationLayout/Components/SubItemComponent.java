@@ -1,5 +1,7 @@
-package AnimationLayout;
+package AnimationLayout.Components;
 
+import AnimationLayout.Item;
+import AnimationLayout.UnD_MovimientoDireccion;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import javax.swing.SwingUtilities;
@@ -20,6 +22,7 @@ public class SubItemComponent extends Item.SubItem {
         initComponents();
         this.jProgressBar1.setUI(new CircularProgressBarUI());
         this.lbHashCode.setText("" + this.hashCode());
+       
     }
 
     public void setSubItemTitle(String subItemTitle) {
@@ -44,6 +47,13 @@ public class SubItemComponent extends Item.SubItem {
         this.subItemInfo03 = subItemInfo03;
     }
 
+    @Override
+    public void onAdded() {
+        this.lb_SubItemIndex.setText(this.getSubItemIndex()+"");
+    }
+    
+    
+    
     @Override
     public void dragAndDropAnimationTimeCurrentValue(float animatedVal) {
      //this.rSProgressCircle1.setValue((int)(animatedVal*100));

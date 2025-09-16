@@ -1,5 +1,7 @@
 package AnimationLayout;
 
+import AnimationLayout.Components.SubItem_BlankComponent;
+import AnimationLayout.Components.Item_BlankComponent;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;

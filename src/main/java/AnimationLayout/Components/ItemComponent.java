@@ -1,5 +1,8 @@
-package AnimationLayout;
+package AnimationLayout.Components;
 
+import AnimationLayout.Components.CircularProgressBarUI;
+import AnimationLayout.Item;
+import AnimationLayout.UnD_MovimientoDireccion;
 import java.awt.Point;
 import javax.swing.SwingUtilities;
 
@@ -302,7 +305,7 @@ public class ItemComponent extends Item {
 
     private void toggleButton_ShowSubItemsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_toggleButton_ShowSubItemsMouseClicked
         if (SwingUtilities.isLeftMouseButton(evt) && evt.getClickCount() == 1) {
-            this.getToggleList().setShowing(!this.getToggleList().isShowing(), true);
+            this.toggleList();
         }
     }//GEN-LAST:event_toggleButton_ShowSubItemsMouseClicked
 

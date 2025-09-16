@@ -1,20 +1,21 @@
-package AnimationLayout;
+package AnimationLayout.Components;
 
+import AnimationLayout.Item;
+import AnimationLayout.SubItemBlank;
+import AnimationLayout.ToggleListAnimationLayout;
 import java.awt.Component;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
 
-public class TestListaMoverItems extends javax.swing.JFrame implements UnD_ListaManipulador.verComponentes, ToggleListAnimationLayout.verComponentes, DnD_ManipuladorItems.verComponentes {
+public class TestListaMoverItems extends javax.swing.JFrame implements  ToggleListAnimationLayout.verComponentes {
 
     List<Item> lista;
     DefaultListModel<String> listaModel;
 
     public TestListaMoverItems() {
         initComponents();
-        UnD_ListaManipulador.setVerComponentesInterface(this);
         ToggleListAnimationLayout.setVerComponentesInterface(this);
-        DnD_ManipuladorItems.setVerComponentesInterface(this);
        
         this.lista = new ArrayList<>();
         //----------------------------------------------------------------------

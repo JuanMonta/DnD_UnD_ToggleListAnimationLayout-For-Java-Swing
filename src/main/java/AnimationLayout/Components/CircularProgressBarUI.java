@@ -1,4 +1,4 @@
-package AnimationLayout;
+package AnimationLayout.Components;
 
 import java.awt.Color;
 import java.awt.Dimension;
