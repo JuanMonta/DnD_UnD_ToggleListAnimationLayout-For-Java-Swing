@@ -62,7 +62,7 @@ import net.miginfocom.swing.MigLayout;
                 }
             }
         });
-        anim.setAnimationTime(250);//Duración de la animación en milisegundos.
+        anim.setAnimationTime(1000);//Duración de la animación en milisegundos.
         anim.animar();
     }
 }
