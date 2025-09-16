@@ -13,13 +13,13 @@ Aquí puedes ver cómo los sub-ítems se muestran y ocultan con una animación f
 ![Demostración de Toggle Animado](https://github.com/JuanMonta/DnD_UnD_ToggleListAnimationLayout-For-Java-Swing/blob/master/gifs/AnimationItemShow.gif?raw=true)
 
 ### Reubicación de Items y SubItems con movimiento Arriba-Abajo
-Movimiento de Items.
+#### Movimiento de Items.
 ![Demostración de Movimiento Arriba Abajo Items ](https://github.com/JuanMonta/DnD_UnD_ToggleListAnimationLayout-For-Java-Swing/blob/master/gifs/AnimationItemUnD01.gif?raw=true)
 
-Movimiento de Sub-Items dentro de un mismo Item.
+#### Movimiento de Sub-Items dentro de un mismo Item.
 ![Demostración de Movimiento Arriba Abajo Items ](https://github.com/JuanMonta/DnD_UnD_ToggleListAnimationLayout-For-Java-Swing/blob/master/gifs/AnimationSubItemUnD01.gif?raw=true)
 
-Movimiento de Sub-Items entre diferentes Items.
+#### Movimiento de Sub-Items entre diferentes Items.
 ![Demostración de Movimiento Arriba Abajo Items ](https://github.com/JuanMonta/DnD_UnD_ToggleListAnimationLayout-For-Java-Swing/blob/master/gifs/AnimationSubItemUnD02.gif?raw=true)
 
 ### Arrastrar y Soltar para Reordenar
