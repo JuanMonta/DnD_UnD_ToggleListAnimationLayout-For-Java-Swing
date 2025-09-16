@@ -3,20 +3,20 @@ package AnimationLayout.Components;
 import AnimationLayout.Item;
 import AnimationLayout.SubItemBlank;
 import AnimationLayout.ToggleListAnimationLayout;
+import AnimationLayout.VerComponentes;
 import java.awt.Component;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
 
-public class TestListaMoverItems extends javax.swing.JFrame implements  ToggleListAnimationLayout.verComponentes {
+public class TestListaMoverItems extends javax.swing.JFrame implements  VerComponentes.verComponentes {
 
     List<Item> lista;
     DefaultListModel<String> listaModel;
 
     public TestListaMoverItems() {
         initComponents();
-        ToggleListAnimationLayout.setVerComponentesInterface(this);
-       
+       VerComponentes.setVerComponentesInterface(this);
         this.lista = new ArrayList<>();
         //----------------------------------------------------------------------
         ItemComponent itemComponent1 = new ItemComponent();

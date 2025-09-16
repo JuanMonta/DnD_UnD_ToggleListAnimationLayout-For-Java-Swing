@@ -200,7 +200,7 @@ public class ToggleListAnimationLayout extends JComponent implements Serializabl
                 }
                 ToggleListAnimationLayout.this.revalidate();
                 ToggleListAnimationLayout.this.repaint();
-                ToggleListAnimationLayout.this.verComponentes.verComponentes();
+                VerComponentes.verComponentes();
                 System.out.println("Item " + item.getItemId() + " eliminado.");
             });
         }
@@ -225,7 +225,7 @@ public class ToggleListAnimationLayout extends JComponent implements Serializabl
                 ToggleListAnimationLayout.this.remove(subItem);
                 ToggleListAnimationLayout.this.revalidate();
                 ToggleListAnimationLayout.this.repaint();
-                ToggleListAnimationLayout.this.verComponentes.verComponentes();
+                VerComponentes.verComponentes();
                 System.out.println("SubItem " + subItem.getSubItemId() + " eliminado.");
             });
         }
@@ -252,16 +252,7 @@ public class ToggleListAnimationLayout extends JComponent implements Serializabl
             }
         }
     }
-    private static verComponentes verComponentes;
 
-    public static void setVerComponentesInterface(verComponentes veComponentes) {
-        verComponentes = veComponentes;
-    }
-
-    public static interface verComponentes {
-
-        public void verComponentes();
-    }
 
     //==========================================================================
     /**

@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.List;
 import javax.swing.JComponent;
 
-
 class UnD_ListaManipulador {
 
     private UnD_AnimadorRedimension animadorRedimension;
@@ -90,7 +89,7 @@ class UnD_ListaManipulador {
 
         //Renderizar todos los componentes que ya estpan ordenados.
         layout.renderAnimatedItems(items);
-        
+
         //Ocultar el item real que creará la ilusion de movimiento mediandte animacion aumentando sun altura
         layout.getMigLayout().setComponentConstraints(itemToSwapWith, "growx, h 0!");
         //Asegurar que el item a quien se le dará la ilusión de movimiento sea visible
@@ -100,9 +99,7 @@ class UnD_ListaManipulador {
         layout.revalidate();
         layout.repaint();
 
-        if (verComponentes1 != null) {
-            verComponentes1.verComponentes();
-        }
+        VerComponentes.verComponentes();
         //obtener la altura para usarla en la animacioón de movimiento mediante 
         //redimensiones de los items involucrados.
         int itemHeight = itemToSwapWith.getPreferredSize().height;
@@ -119,9 +116,7 @@ class UnD_ListaManipulador {
                     layout.getMigLayout().setComponentConstraints(itemToSwapWith, "growx");// Asegurar que ocupe todo el ancho del layout.
                     layout.getMigLayout().setComponentConstraints(movingItem, "growx");// Asegurar que ocupe todo el ancho del layout.
                     layout.renderItems(items); //Renderizar los componentes
-                    if (verComponentes1 != null) {
-                        verComponentes1.verComponentes();
-                    }
+                    VerComponentes.verComponentes();
                 }
         );
     }
@@ -236,11 +231,8 @@ class UnD_ListaManipulador {
             layout.getMigLayout().setComponentConstraints(blank, "growx");
             layout.revalidate();
             layout.repaint();
-
-            if (verComponentes1 != null) {
-                verComponentes1.verComponentes();
-            }
-
+            VerComponentes.verComponentes();
+            
             // Tomando la altura del subItem que se debe expandir mediante animación.
             int subItemHeight = subItemToGrow.getPreferredSize().height;
             this.animadorRedimension.animarRedimension(
@@ -255,9 +247,7 @@ class UnD_ListaManipulador {
                         //Asegurar que se ocupe todo el ancho del layout.
                         layout.getMigLayout().setComponentConstraints(subItemToGrow, "growx");
                         layout.renderItems(items); //Renderizar todos los componentes
-                        if (verComponentes1 != null) {
-                            verComponentes1.verComponentes();
-                        }
+                        VerComponentes.verComponentes();
                     }
             );
 
@@ -304,10 +294,8 @@ class UnD_ListaManipulador {
             layout.getMigLayout().setComponentConstraints(blank, "growx");
             layout.revalidate();
             layout.repaint();
+            VerComponentes.verComponentes();
 
-            if (verComponentes1 != null) {
-                verComponentes1.verComponentes();
-            }
             //Tomamos la altura del subItem a expandir mediante animación.
             int subItemHeight = movingSubItem.getPreferredSize().height;
 
@@ -326,9 +314,8 @@ class UnD_ListaManipulador {
                         layout.getMigLayout().setComponentConstraints(movingSubItem, "growx");
                         //Renderizar todos los componentes ya ordenados.
                         layout.renderItems(items);
-                        if (verComponentes1 != null) {
-                            verComponentes1.verComponentes();
-                        }
+                        VerComponentes.verComponentes();
+
                     });
         }
     }
@@ -353,19 +340,6 @@ class UnD_ListaManipulador {
      */
     public void eliminarSubItem(JComponent layout, Item.SubItem subItemAEliminar, Runnable onEnd) {
         this.animadorEliminacion.animarParaEliminar(layout, subItemAEliminar, onEnd);
-    }
-
-    //==========================================================================
-    //Solo para ver en el JForm principal los componentes en un JList el orden de los componentes.
-    private static verComponentes verComponentes1;
-
-    public static void setVerComponentesInterface(verComponentes veComponentes) {
-        verComponentes1 = veComponentes;
-    }
-
-    public static interface verComponentes {
-
-        public void verComponentes();
     }
 
 }

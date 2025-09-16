@@ -62,9 +62,7 @@ class DnD_ManipuladorItems extends DnD_MoveComponentAdapter {
             this.toggleListAnimationLayout.repaint();
 
         }
-        if (verComponentes1 != null) {
-            verComponentes1.verComponentes();
-        }
+        VerComponentes.verComponentes();
     }
 
     public void clonarItemOSubItem(Component compToClone) {
@@ -194,9 +192,7 @@ class DnD_ManipuladorItems extends DnD_MoveComponentAdapter {
             this.itemMoveIndex = componentInLayoutIndex;
             this.toggleListAnimationLayout.revalidate();
             this.toggleListAnimationLayout.repaint();
-            if (verComponentes1 != null) {
-                verComponentes1.verComponentes();
-            }
+            VerComponentes.verComponentes();
         }
     }
 
@@ -224,9 +220,7 @@ class DnD_ManipuladorItems extends DnD_MoveComponentAdapter {
             this.itemMoveIndex = -1;
             this.lastY = -1;
         }
-        if (verComponentes1 != null) {
-            verComponentes1.verComponentes();
-        }
+        VerComponentes.verComponentes();
     }
 
     private synchronized void ordenarItems() {
@@ -274,18 +268,4 @@ class DnD_ManipuladorItems extends DnD_MoveComponentAdapter {
         }
         this.toggleListAnimationLayout.renderItems(listaNueva);
     }
-
-    //==========================================================================
-    //Solo para ver en el JForm principal los componentes en un JList el orden de los componentes.
-    private static verComponentes verComponentes1;
-
-    public static void setVerComponentesInterface(verComponentes veComponentes) {
-        verComponentes1 = veComponentes;
-    }
-
-    public static interface verComponentes {
-
-        public void verComponentes();
-    }
-
 }
