@@ -151,7 +151,7 @@ class DnD_ManipuladorItems extends DnD_MoveComponentAdapter {
         }
 
         // Si estamos arrastrando un SubItem, para evitar soltar el subItem fuera de un Item
-        if (this.itemToClone instanceof Item.SubItem && componentInLayout instanceof Item) {
+        if (this.itemToClone instanceof Item.SubItem && componentInLayout instanceof Item && componentInLayoutIndex <=0) {
             return;
         }
         // Si estamos arrastrando un Item principal
