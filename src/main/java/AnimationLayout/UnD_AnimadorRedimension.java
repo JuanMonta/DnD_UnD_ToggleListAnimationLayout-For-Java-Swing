@@ -4,14 +4,19 @@ import java.awt.Component;
 import javax.swing.JComponent;
 import net.miginfocom.swing.MigLayout;
 
-
 /**
  * Usado para animar una expansión o reducción Items{@link Item} -
  * SubItems{@link Item.SubItem} en conjunto con su respectivo
  * Item{@link ItemBlank} - SubItem{@link SubItemBlank} en blanco, implementado
  * en la clase {@link ListaManipulador}.
  */
- class UnD_AnimadorRedimension {
+class UnD_AnimadorRedimension {
+
+    private int animationTime = 0;
+
+    void setRedimensionAnimationTime(int milis) {
+        this.animationTime = milis;
+    }
 
     /**
      * Anima el cambio de tamaño de altura entre dos componentes, generalmente
@@ -62,7 +67,9 @@ import net.miginfocom.swing.MigLayout;
                 }
             }
         });
-        anim.setAnimationTime(1000);//Duración de la animación en milisegundos.
+        if (this.animationTime > 0) {
+            anim.setAnimationTime(this.animationTime);//Duración de la animación en milisegundos.
+        }
         anim.animar();
     }
 }

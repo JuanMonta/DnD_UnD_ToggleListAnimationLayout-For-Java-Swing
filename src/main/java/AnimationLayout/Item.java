@@ -254,9 +254,10 @@ public abstract class Item extends JPanel implements DnD_AnimationTimeCurrentVal
 
     }
 
-    public void dragAndDropSetAnimationTime(int milis) {
+    void setDragAndDropAnimationTime(int milis) {
         this.itemDragAndDropActivar.dragAndDropSetAnimationTime(milis);
     }
+
 
     //##########################################################################
     /**
@@ -383,7 +384,7 @@ public abstract class Item extends JPanel implements DnD_AnimationTimeCurrentVal
             this.itemDragAndDropActivar.setMouseDraggedOnItem(mouseDraggedEvent);
         }
 
-        public void dragAndDropSetAnimationTime(int milis) {
+        void setDragAndDropAnimationTime(int milis) {
             this.itemDragAndDropActivar.dragAndDropSetAnimationTime(milis);
         }
 
@@ -500,7 +501,7 @@ public abstract class Item extends JPanel implements DnD_AnimationTimeCurrentVal
         public void setSubItemInfo03(String subItemInfo03) {
             this.subItemInfo03 = subItemInfo03;
         }
-        
+
         protected void onAdded() {
 
         }

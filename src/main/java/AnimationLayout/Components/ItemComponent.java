@@ -18,7 +18,6 @@ public class ItemComponent extends Item {
         this.lb_HashCode.setText("hashCode: " + this.hashCode());
         this.jProgressBar1.setUI(new CircularProgressBarUI());
         this.colocarSize(this.getPreferredSize().width, this.getPreferredSize().height);
-        this.dragAndDropSetAnimationTime(1000);
     }
 
     @Override

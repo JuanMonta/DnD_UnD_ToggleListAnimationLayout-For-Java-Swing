@@ -15,7 +15,7 @@ import java.io.Serializable;
 import javax.swing.JScrollPane;
 import javax.swing.JViewport;
 
-public class ToggleListAnimationLayout extends JComponent implements Serializable{
+public class ToggleListAnimationLayout extends JComponent implements Serializable {
 
     /**
      * Donde se manipula las listas de los componentes Items y SubItems del
@@ -33,6 +33,9 @@ public class ToggleListAnimationLayout extends JComponent implements Serializabl
      * ayudará con la ilusión de movimiento de los subItems.
      */
     private final SubItem_BlankComponent subItem_Blank;
+
+    private int itemDragAndDropAnimationTime = 0;
+    private int subItemDragAndDropAnimationTime = 0;
 
     public ToggleListAnimationLayout() {
         init();
@@ -78,7 +81,7 @@ public class ToggleListAnimationLayout extends JComponent implements Serializabl
         }
         return jScrollPaneLayoutContainer;
     }
-    
+
     @Override
     public synchronized Component add(Component comp) {
         Component com = super.add(comp);
@@ -93,12 +96,9 @@ public class ToggleListAnimationLayout extends JComponent implements Serializabl
      */
     public synchronized List<Item> getListaItems() {
         List<Component> listaComponentes = Arrays.asList(this.getComponents());
-        List<Item> listaItems = null;
+        List<Item> listaItems = new ArrayList<>();
         for (Component comp : listaComponentes) {
             if (comp instanceof Item item) {
-                if (listaItems == null) {
-                    listaItems = new ArrayList<>();
-                }
                 listaItems.add(item);
             }
         }
@@ -106,10 +106,82 @@ public class ToggleListAnimationLayout extends JComponent implements Serializabl
     }
 
     /**
+     * Tiempo de duración de la animación al mover hacia arriba o abajo un Item,
+     * el valor debe ser mayor a cero, caso contrario se tomará el valor por
+     * defecto de 350 milis.
+     *
+     * @param milis tiempo en milisegundos.
+     */
+    public void setItemUpDownAnimationTime(int milis) {
+        this.listaManipulador.setRedimensionItemAnimationTime(milis);
+    }
+
+    /**
+     * Tiempo de duración de la animación al mover hacia arriba o abajo un SubItem,
+     * el valor debe ser mayor a cero, caso contrario se tomará el valor por
+     * defecto de 350 milis.
+     *
+     * @param milis tiempo en milisegundos.
+     */
+    public void setSubItemUpDownAnimationTime(int milis) {
+        this.listaManipulador.setRedimensionSubItemAnimationTime(milis);
+    }
+    /**
+     * Tiempo de duración de la animación al eliminar un Item de la lista,
+     * el valor debe ser mayor a cero, caso contrario se tomará el valor por
+     * defecto de 350 milis.
+     *
+     * @param milis tiempo en milisegundos.
+     */
+    public void setItemDeleteAnimationTime(int milis) {
+        this.listaManipulador.setEliminacionItemAnimationTime(milis);
+    }
+    /**
+     * Tiempo de duración de la animación al eliminar un SubItem de la lista,
+     * el valor debe ser mayor a cero, caso contrario se tomará el valor por
+     * defecto de 350 milis.
+     *
+     * @param milis tiempo en milisegundos.
+     */
+    public void setSubItemDeleteAnimationTime(int milis) {
+        this.listaManipulador.setEliminacionSubItemAnimationTime(milis);
+    }
+
+    /**
+     * Tiempo que debe pasar para activar el drag and drop de los item, el valor
+     * debe ser mayor a cero, caso contrario se tomará el valor por defecto de
+     * 350 milis.
+     *
+     *
+     * @param milis tiempo en milisegundos.
+     */
+    public synchronized void setItemDragAndDropAnimationTime(int milis) {
+        this.itemDragAndDropAnimationTime = milis;
+        for (Item item : this.getListaItems()) {
+            item.setDragAndDropAnimationTime(milis);
+        }
+    }
+
+    /**
+     * Tiempo que debe pasar para activar el drag and drop de los subItems, el
+     * valor debe ser mayor a cero, caso contrario se tomará el valor por
+     * defecto de 350 milis.
+     *
+     * @param milis tiempo en milisegundos.
+     */
+    public synchronized void setSubItemDragAndDropAnimationTime(int milis) {
+        this.subItemDragAndDropAnimationTime = milis;
+        for (Item item : this.getListaItems()) {
+            item.setDragAndDropAnimationTime(milis);
+        }
+    }
+
+    /**
      * Mover directamente un item.
      *
      * @param itemParent el item a mover.
-     * @param direction UP=-1 DOWN=1
+     * @param direction UP=-1 DOWN=1 valores de la clase
+     * {@link UnD_MovimientoDireccion}
      */
     public synchronized void moverItem(Item itemParent, int direction) {
         List<Item> listaItems = this.getListaItems();
@@ -167,7 +239,7 @@ public class ToggleListAnimationLayout extends JComponent implements Serializabl
 
     /**
      * Se coloca la clase UnD_MovimientoListener en cada uno de los Items y
- SubItems, que ayudará con el movimietnos de los Items y SubItems.
+     * SubItems, que ayudará con el movimietnos de los Items y SubItems.
      *
      * @param listener
      */
@@ -233,8 +305,8 @@ public class ToggleListAnimationLayout extends JComponent implements Serializabl
 
     /**
      * Se coloca la clase UnD_EliminacionListener en cada uno de los Items y
- SubItems, que ayudará con la eliminación de los Items y SubItems del
- layout.
+     * SubItems, que ayudará con la eliminación de los Items y SubItems del
+     * layout.
      *
      * @param listener
      */
@@ -253,7 +325,6 @@ public class ToggleListAnimationLayout extends JComponent implements Serializabl
         }
     }
 
-
     //==========================================================================
     /**
      * Colocar todos los componentes Items y SubItems en el layout en el orden
@@ -268,6 +339,9 @@ public class ToggleListAnimationLayout extends JComponent implements Serializabl
             item.setMovimientoListener(movimientoListener);
             item.setEliminacionListener(eliminacionListener);
             item.setToggleListLayout(this);
+            if (this.itemDragAndDropAnimationTime > 0) {
+                item.setDragAndDropAnimationTime(this.itemDragAndDropAnimationTime);
+            }
             item.setItemIndex(i);
             item.itemAdded();
             this.add(item);
@@ -277,6 +351,9 @@ public class ToggleListAnimationLayout extends JComponent implements Serializabl
                     if (subItem instanceof Item.SubItem sub) {
                         sub.setMovimientoListener(movimientoListener);//Colocando el listener de movimiento para los Items y SubItems
                         sub.setEliminacionListener(eliminacionListener);//Colocando el listener de eliminación de los Items y SubItems
+                        if (this.subItemDragAndDropAnimationTime > 0) {
+                            sub.setDragAndDropAnimationTime(this.subItemDragAndDropAnimationTime);
+                        }
                     }
                     if (selected) {
                         this.add(subItem);

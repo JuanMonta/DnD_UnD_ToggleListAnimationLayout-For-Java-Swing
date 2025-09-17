@@ -9,6 +9,12 @@ import net.miginfocom.swing.MigLayout;
  */
 class UnD_AnimadorEliminacion {
 
+    private int animationTime = 0;
+
+    void setEliminacionAnimationTime(int milis) {
+        this.animationTime = milis;
+    }
+
     /**
      * Anima el desvanecimiento y la reducción de altura de un componente para
      * eliminarlo.
@@ -59,7 +65,10 @@ class UnD_AnimadorEliminacion {
             }
 
         });
-        anim.setAnimationTime(350); // Duración de la animación en milisegundos
+        if (this.animationTime > 0) {
+            anim.setAnimationTime(this.animationTime); // Duración de la animación en milisegundos
+        }
         anim.animar();
     }
+
 }

@@ -7,13 +7,31 @@ import javax.swing.JComponent;
 
 class UnD_ListaManipulador {
 
-    private UnD_AnimadorRedimension animadorRedimension;
-    private UnD_AnimadorEliminacion animadorEliminacion;
+    private UnD_AnimadorRedimension animadorRedimensionItems, animadorRedimensionSubItems;
+    private UnD_AnimadorEliminacion animadorEliminacionItems, animadorEliminacionSubItems;
 
     public UnD_ListaManipulador() {
-        this.animadorRedimension = new UnD_AnimadorRedimension();
-        this.animadorEliminacion = new UnD_AnimadorEliminacion();
+        this.animadorRedimensionItems = new UnD_AnimadorRedimension();
+        this.animadorRedimensionSubItems = new UnD_AnimadorRedimension();
+        
+        this.animadorEliminacionItems = new UnD_AnimadorEliminacion();
+        this.animadorEliminacionSubItems = new UnD_AnimadorEliminacion();
     }
+    
+    void setRedimensionItemAnimationTime(int milis){
+        this.animadorRedimensionItems.setRedimensionAnimationTime(milis);
+    }
+    void setRedimensionSubItemAnimationTime(int milis){
+        this.animadorRedimensionSubItems.setRedimensionAnimationTime(milis);
+    }
+    void setEliminacionItemAnimationTime(int milis){
+        this.animadorEliminacionItems.setEliminacionAnimationTime(milis);
+    }
+    
+    void setEliminacionSubItemAnimationTime(int milis){
+        this.animadorEliminacionSubItems.setEliminacionAnimationTime(milis);
+    }
+    
 
     /**
      * Animar el movimiento UP - DOWN de los items del layout con o sin
@@ -103,7 +121,7 @@ class UnD_ListaManipulador {
         //obtener la altura para usarla en la animacioón de movimiento mediante 
         //redimensiones de los items involucrados.
         int itemHeight = itemToSwapWith.getPreferredSize().height;
-        this.animadorRedimension.animarRedimension(
+        this.animadorRedimensionItems.animarRedimension(
                 layout,
                 blank, //Componente a reducir
                 itemToSwapWith, //Componente a expandir
@@ -235,7 +253,7 @@ class UnD_ListaManipulador {
             
             // Tomando la altura del subItem que se debe expandir mediante animación.
             int subItemHeight = subItemToGrow.getPreferredSize().height;
-            this.animadorRedimension.animarRedimension(
+            this.animadorRedimensionSubItems.animarRedimension(
                     layout,
                     blank, // subItem blanco que se reducirá el tamaño.
                     subItemToGrow, // subItem el cual se expandirá.
@@ -299,7 +317,7 @@ class UnD_ListaManipulador {
             //Tomamos la altura del subItem a expandir mediante animación.
             int subItemHeight = movingSubItem.getPreferredSize().height;
 
-            this.animadorRedimension.animarRedimension(
+            this.animadorRedimensionSubItems.animarRedimension(
                     layout,
                     blank, //subItem en blanco que se reducirá su tamaño mediante animación.
                     movingSubItem,//subItem que se expandirá su tamaño mediante animación.
@@ -328,7 +346,7 @@ class UnD_ListaManipulador {
      * @param onEnd Runnable a ejecutarse cuando termine la animación.
      */
     public void eliminarItem(JComponent layout, Item itemAEliminar, Runnable onEnd) {
-        this.animadorEliminacion.animarParaEliminar(layout, itemAEliminar, onEnd);
+        this.animadorEliminacionItems.animarParaEliminar(layout, itemAEliminar, onEnd);
     }
 
     /**
@@ -339,7 +357,7 @@ class UnD_ListaManipulador {
      * @param onEnd Runnable a ejecutarse cuando termine la animación.
      */
     public void eliminarSubItem(JComponent layout, Item.SubItem subItemAEliminar, Runnable onEnd) {
-        this.animadorEliminacion.animarParaEliminar(layout, subItemAEliminar, onEnd);
+        this.animadorEliminacionSubItems.animarParaEliminar(layout, subItemAEliminar, onEnd);
     }
 
 }

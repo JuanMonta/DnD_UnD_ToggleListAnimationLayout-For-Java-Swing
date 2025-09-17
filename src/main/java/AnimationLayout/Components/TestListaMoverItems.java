@@ -2,21 +2,20 @@ package AnimationLayout.Components;
 
 import AnimationLayout.Item;
 import AnimationLayout.SubItemBlank;
-import AnimationLayout.ToggleListAnimationLayout;
 import AnimationLayout.VerComponentes;
 import java.awt.Component;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultListModel;
 
-public class TestListaMoverItems extends javax.swing.JFrame implements  VerComponentes.verComponentes {
+public class TestListaMoverItems extends javax.swing.JFrame implements VerComponentes.verComponentes {
 
     List<Item> lista;
     DefaultListModel<String> listaModel;
 
     public TestListaMoverItems() {
         initComponents();
-       VerComponentes.setVerComponentesInterface(this);
+        VerComponentes.setVerComponentesInterface(this);
         this.lista = new ArrayList<>();
         //----------------------------------------------------------------------
         ItemComponent itemComponent1 = new ItemComponent();
@@ -83,9 +82,18 @@ public class TestListaMoverItems extends javax.swing.JFrame implements  VerCompo
         lista.forEach(p -> {
             listaModel.addElement(p.toString());
         });
-        toggleListAnimationLayout1.renderItems(lista);
+        this.toggleListAnimationLayout1.setItemDragAndDropAnimationTime(3000);
+        this.toggleListAnimationLayout1.setSubItemDragAndDropAnimationTime(2000);
+
+        this.toggleListAnimationLayout1.setItemUpDownAnimationTime(3000);
+        this.toggleListAnimationLayout1.setSubItemUpDownAnimationTime(2000);
+
+        this.toggleListAnimationLayout1.setItemDeleteAnimationTime(2000);
+        this.toggleListAnimationLayout1.setSubItemDeleteAnimationTime(2000);
+
+        this.toggleListAnimationLayout1.renderItems(lista);
         this.verComponentes();
-        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -223,8 +231,8 @@ public class TestListaMoverItems extends javax.swing.JFrame implements  VerCompo
         listaModel.removeAllElements();
         for (Component item : toggleListAnimationLayout1.getComponents()) {
             if (item instanceof Item.SubItem || item instanceof SubItemBlank) {
-                listaModel.addElement("   ->"+item.toString());
-            }else{
+                listaModel.addElement("   ->" + item.toString());
+            } else {
                 listaModel.addElement(item.toString());
             }
         }
