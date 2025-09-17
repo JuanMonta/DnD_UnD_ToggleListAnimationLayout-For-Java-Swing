@@ -172,7 +172,11 @@ public class ToggleListAnimationLayout extends JComponent implements Serializabl
     public synchronized void setSubItemDragAndDropAnimationTime(int milis) {
         this.subItemDragAndDropAnimationTime = milis;
         for (Item item : this.getListaItems()) {
-            item.setDragAndDropAnimationTime(milis);
+            for (Component comp : item.getSubItems()) {
+                if (comp instanceof Item.SubItem subItem) {
+                    subItem.setDragAndDropAnimationTime(this.subItemDragAndDropAnimationTime);
+                }
+            }
         }
     }
 
