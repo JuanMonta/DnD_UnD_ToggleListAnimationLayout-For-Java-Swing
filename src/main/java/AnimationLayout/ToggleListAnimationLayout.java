@@ -294,6 +294,7 @@ public class ToggleListAnimationLayout extends JComponent implements Serializabl
             System.out.println("Petición para eliminar SubItem: " + subItem.getSubItemId() + " del Item: " + finalParentItem.getItemId());
             ToggleListAnimationLayout.this.listaManipulador.eliminarSubItem(ToggleListAnimationLayout.this, subItem, () -> {
                 finalParentItem.getSubItems().remove(subItem);
+                finalParentItem.subItemDeleted(subItem);
                 ToggleListAnimationLayout.this.remove(subItem);
                 ToggleListAnimationLayout.this.revalidate();
                 ToggleListAnimationLayout.this.repaint();

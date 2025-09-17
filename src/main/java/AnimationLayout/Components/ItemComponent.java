@@ -12,7 +12,6 @@ import javax.swing.SwingUtilities;
  */
 public class ItemComponent extends Item {
 
-
     public ItemComponent() {
         initComponents();
         this.lb_HashCode.setText("hashCode: " + this.hashCode());
@@ -22,13 +21,18 @@ public class ItemComponent extends Item {
 
     @Override
     public void itemAdded() {
-        this.lb_ItemIndex.setText(""+this.getItemIndex());
+        this.lb_ItemIndex.setText("" + this.getItemIndex());
         this.lb_Title.setText(this.getItemTitle());
         this.lb_SubTitle.setText(this.getItemSubTitle());
     }
 
     @Override
     public void subItemAdded(Item.SubItem subItemAdded) {
+        this.lb_SubItemNumber.setText("" + this.getSubItemsCount());
+    }
+
+    @Override
+    public void subItemDeleted(SubItem subItemDeleted) {
         this.lb_SubItemNumber.setText("" + this.getSubItemsCount());
     }
 

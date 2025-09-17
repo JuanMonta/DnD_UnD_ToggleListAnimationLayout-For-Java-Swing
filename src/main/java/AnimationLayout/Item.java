@@ -215,7 +215,9 @@ public abstract class Item extends JPanel implements DnD_AnimationTimeCurrentVal
      */
     public void subItemAdded(Item.SubItem subItemAdded) {
     }
-
+    public void subItemDeleted(Item.SubItem subItemDeleted){
+        
+    }
     /**
      * Obtener la lista de los subItems del Item.
      *
