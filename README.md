@@ -7,6 +7,8 @@ Es ideal para crear interfaces de usuario modernas, dinámicas e intuitivas en a
 ---
 
 ## Demostración
+### Estructura de la lista
+![Demostración de Toggle Animado](https://github.com/JuanMonta/DnD_UnD_ToggleListAnimationLayout-For-Java-Swing/blob/master/gifs/EstructuraLista.png?raw=true)
 
 ### Expansión y Colapso de Items
 Aquí puedes ver cómo los sub-ítems se muestran y ocultan con una animación fluida.
