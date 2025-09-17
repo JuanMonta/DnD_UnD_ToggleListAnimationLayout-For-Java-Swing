@@ -46,7 +46,14 @@ Moviendo Sub-Items entre Items que
 
 ![Demostración de Arrastrar y Soltar Sub-Items 03](https://github.com/JuanMonta/DnD_UnD_ToggleListAnimationLayout-For-Java-Swing/blob/master/gifs/AnimationSubItemDnD03.gif?raw=true)
 
+### Eliminación de un Item y SubItem de la lista.
+Eliminación de elementos de la lista con una animación suave.
 
+#### Eliminación de un Item.
+![Demostración de Eliminación de Item](https://github.com/JuanMonta/DnD_UnD_ToggleListAnimationLayout-For-Java-Swing/blob/master/gifs/AnimationDeleteItem.gif?raw=true)
+
+#### Eliminación de un SubItem.
+![Demostración de Eliminación de SubItem](https://github.com/JuanMonta/DnD_UnD_ToggleListAnimationLayout-For-Java-Swing/blob/master/gifs/AnimationDeleteSubItem.gif?raw=true)
 ---
 
 ## Características Principales
