@@ -15,8 +15,8 @@ import net.miginfocom.swing.MigLayout;
 
 class DnD_JWindowDrag extends DnD_MoveComponentAdapter {
 
-    private Point dragOffset; 
-    private int blockX;      
+    private Point dragOffset;
+    private int blockX;
     private ToggleListAnimationLayout toggleListAnimationLayout;
     private Container boundsContainer;
     private JScrollPane jScrollListContainer;
@@ -48,11 +48,24 @@ class DnD_JWindowDrag extends DnD_MoveComponentAdapter {
         this.jWindow.getContentPane().removeAll();
         this.jWindow.setVisible(false);
         this.dragOffset = null;
-        this.blockX = 0;       
+        this.blockX = 0;
     }
 
-
+    /**
+     * Se lanza en {@link DnD_JWindowDrag#} cuando: -Al inicio cuando el
+     * animador {@link DnD_Activar#dragAndDropInit(java.lang.String)} termina y
+     * lanza {@link DnD_Activar#verificarItems()} que es donde se lanza {@link DnD_Activar#onDragItem(int, AnimationLayout.Item, java.awt.event.MouseEvent) }
+     *  0 {@link DnD_Activar#onDragSubItem(int, AnimationLayout.Item.SubItem, java.awt.event.MouseEvent)}
+     * -En {@link DnD_Activar#setMouseDraggedOnItem(java.awt.event.MouseEvent)}
+     * permite capturar el drag del mouse.
+     *
+     * @param compToDrag Item o el SubItem a cual sacarle una imagen para ser
+     * colocado en el jwindow.
+     * @param mouseEvent evento donde nos interesa el mouse drag para usarlo
+     * para mover el jwindow.
+     */
     private void onDragInits(Component compToDrag, MouseEvent mouseEvent) {
+        //al principio
         if (!this.dragReady) {
             this.dragReady = true;
             if (compToDrag instanceof Item item) {
