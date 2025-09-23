@@ -420,9 +420,10 @@ public abstract class Item extends JPanel implements DnD_AnimationTimeCurrentVal
 
     //##########################################################################
     /**
-     * Para extender a una clase JPanel para tomarlo como {@link Item.SubItem} en el layout
-     * {@link ToggleListAnimationLayout}. Ejm: public class miPanel extends
-     * JPanel{} replace with-> public class miPanel extends Item.SubItem{}
+     * Para extender a una clase JPanel para tomarlo como {@link Item.SubItem}
+     * en el layout {@link ToggleListAnimationLayout}. Ejm: public class miPanel
+     * extends JPanel{} replace with-> public class miPanel extends
+     * Item.SubItem{}
      */
     public abstract static class SubItem extends JPanel implements DnD_AnimationTimeCurrentValue {
 
@@ -449,23 +450,50 @@ public abstract class Item extends JPanel implements DnD_AnimationTimeCurrentVal
 
         //##########################################################################
         //PARA LA ANIMACION DRAG AND DROP-------------------------------------------
+        /**
+         * Lanzado mientras dura la animación de activación del drag and drop
+         * del {@link Item.SubItem}, asignado con
+         * {@link #setDragAndDropAnimationTime(int)}
+         *
+         * @param animatedVal Valor acorde a la duración de
+         * {@link #setDragAndDropAnimationTime(int)}
+         */
         @Override
         public void dragAndDropAnimationTimeCurrentValue(float animatedVal) {
 
         }
 
+        /**
+         * Inicia la duración de activación del drag and drop del {@link Item},
+         * asignado con {@link #setDragAndDropAnimationTime(int)}.
+         */
         public void dragAndDropInit() {
             this.itemDragAndDropActivar.dragAndDropInit("SUBITEM");
         }
 
+        /**
+         * Detiene la activación del drag and drop del {@link Item.SubItem}.
+         */
         public void dragAndDropCancel() {
             this.itemDragAndDropActivar.dragAndDropCancel();
         }
 
+        /**
+         * Captura el movimiento del mouse para mover el {@link Item.SubItem}.
+         *
+         * @param mouseDraggedEvent
+         */
         public void dragAndDropMouseDragged(java.awt.event.MouseEvent mouseDraggedEvent) {
             this.itemDragAndDropActivar.setMouseDraggedOnItem(mouseDraggedEvent);
         }
 
+        /**
+         * Duración en milisegundos que debe pasar para activar el drag and drop
+         * del {@link Item.SubItem}.
+         *
+         * @param milis duración hasta la activación del drag and drop del
+         * {@link Item.SubItem}.
+         */
         void setDragAndDropAnimationTime(int milis) {
             this.itemDragAndDropActivar.dragAndDropSetAnimationTime(milis);
         }
@@ -482,7 +510,8 @@ public abstract class Item extends JPanel implements DnD_AnimationTimeCurrentVal
         }
 
         /**
-         * Inicia la eliminación del subItem mediante una animación.
+         * Inicia la eliminación de este {@link Item.SubItem} mediante una
+         * animación.
          */
         public void deleteSubItem() {
             //Listener que se agrega automáticamente por el {@link ToggleListAnimationLayout}.
@@ -496,14 +525,14 @@ public abstract class Item extends JPanel implements DnD_AnimationTimeCurrentVal
          * Listener colocado autompaticamente por el
          * {@link ToggleListAnimationLayout}. No actualizar.
          *
-         * @param listener
+         * @param listener {@link UnD_MovimientoListener}
          */
         void setMovimientoListener(UnD_MovimientoListener listener) {
             this.movimientoListener = listener;
         }
 
         /**
-         * Iniciar el movimiento del subItem del Item.
+         * Iniciar el movimiento del {@link Item.SubItem} del {@link Item}.
          *
          * @param direccion
          * {@link MovimientoDireccion#UP} {@link MovimientoDireccion#DOWN}
@@ -512,22 +541,32 @@ public abstract class Item extends JPanel implements DnD_AnimationTimeCurrentVal
             //Lanzar el método del listener para iniciar el movimiento del subItem.
             this.movimientoListener.moverSubItem(this, direccion);
         }
-        /**
-         * Para colocarle un ID al subItem. Default = ""
-         */
+
         private String subItemId = "", subItemTitle = "", subItemSubTitle = "", subItemInfo01 = "", subItemInfo02 = "", subItemInfo03 = "";
         private int subItemIndex = -1;
 
+        /**
+         * El index del {@link Item.SubItem} dentro de su {@link Item} padre.
+         *
+         * @return el index del {@link Item.SubItem}
+         */
         public int getSubItemIndex() {
             return subItemIndex;
         }
 
+        /**
+         * Colocar el index del {@link Item.SubItem} que tendrá dentro de su
+         * {@link Item} padre.
+         *
+         * @param subItemIndex el index que tendrá dentro del {@link Item}
+         * padre.
+         */
         void setSubItemIndex(int subItemIndex) {
             this.subItemIndex = subItemIndex;
         }
 
         /**
-         * Obtener el ID asignado al subItem.
+         * Obtener el ID asignado al {@link Item.SubItem}.
          *
          * @return ID asignado, por default = ""
          */
@@ -536,54 +575,108 @@ public abstract class Item extends JPanel implements DnD_AnimationTimeCurrentVal
         }
 
         /**
-         * Colocar un ID para el subItem,
+         * Colocar un ID para el {@link Item.SubItem}.
          *
-         * @param subItemId ID asignado, default = ""
+         * @param subItemId ID ha asignar.
          */
         public void setSubItemId(String subItemId) {
             this.subItemId = subItemId;
         }
 
+        /**
+         * Obtener el TÍTULO asignado al {@link Item.SubItem}.
+         *
+         * @return TÍTULO asignado, por default = ""
+         */
         public String getSubItemTitle() {
             return subItemTitle;
         }
 
+        /**
+         * Colocar un TÍTULO para el {@link Item.SubItem}.
+         *
+         * @param subItemTitle SUBTITULO ha asignar.
+         */
         public void setSubItemTitle(String subItemTitle) {
             this.subItemTitle = subItemTitle;
         }
 
+        /**
+         * Obtener el SUBTITULO asignado al {@link Item.SubItem}.
+         *
+         * @return el SUBTITULO asginado, por default = ""
+         */
         public String getSubItemSubTitle() {
             return subItemSubTitle;
         }
 
+        /**
+         * Colocar un SUBTÍTULO al {@link Item.SubItem}.
+         *
+         * @param subItemSubTitle el SUBTÍTULO ha asignar.
+         */
         public void setSubItemSubTitle(String subItemSubTitle) {
             this.subItemSubTitle = subItemSubTitle;
         }
 
+        /**
+         * Obtener la INFORMACIÓN asignada al {@link Item.SubItem}.
+         *
+         * @return La INFORMACIÓN asignada, default = ""
+         */
         public String getSubItemInfo01() {
             return subItemInfo01;
         }
 
+        /**
+         * Colocar alguna INFORMACIÓN al {@link Item.SubItem}.
+         *
+         * @param subItemInfo01 INFORMACIÓN ha asignar.
+         */
         public void setSubItemInfo01(String subItemInfo01) {
             this.subItemInfo01 = subItemInfo01;
         }
 
+        /**
+         * Obtener la INFORMACIÓN asignada al {@link Item.SubItem}.
+         *
+         * @return La INFORMACIÓN asignada, default = ""
+         */
         public String getSubItemInfo02() {
             return subItemInfo02;
         }
 
+        /**
+         * Colocar alguna INFORMACIÓN al {@link Item.SubItem}.
+         *
+         * @param subItemInfo02 INFORMACIÓN ha asignar.
+         */
         public void setSubItemInfo02(String subItemInfo02) {
             this.subItemInfo02 = subItemInfo02;
         }
 
+        /**
+         * Obtener la INFORMACIÓN asignada al {@link Item.SubItem}.
+         *
+         * @return La INFORMACIÓN asignada, default = ""
+         */
         public String getSubItemInfo03() {
             return subItemInfo03;
         }
 
+        /**
+         * Colocar alguna INFORMACIÓN al {@link Item.SubItem}.
+         *
+         * @param subItemInfo03 INFORMACIÓN ha asignar.
+         */
         public void setSubItemInfo03(String subItemInfo03) {
             this.subItemInfo03 = subItemInfo03;
         }
 
+        /**
+         * Notifica cuando este {@link Item.SubItem} es añadido al {@link Item}
+         * padre.
+         */
         protected void onAdded() {
 
         }

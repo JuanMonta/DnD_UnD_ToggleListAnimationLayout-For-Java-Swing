@@ -9,18 +9,18 @@ import java.awt.Component;
 public interface UnD_MovimientoListener {
 
     /**
-     * Notificar el inicio del movimiento de un Item.
+     * Notificar el inicio del movimiento de un {@link Item}.
      *
-     * @param item el Item a mover.
+     * @param item el {@link Item} a mover.
      * @param direccion dirección en la que se moverá,
      * {@link MovimientoDireccion#UP} {@link MovimientoDireccion#DOWN}
      */
     void moverItem(Component item, int direccion);
 
     /**
-     * Notificar el inicio del movimientos de un SubItem.
+     * Notificar el inicio del movimientos de un {@link Item.SubItem}.
      *
-     * @param subItem el Item a mover.
+     * @param subItem el {@link Item.SubItem} a mover.
      * @param direccion dirección en la que se moverá,
      * {@link MovimientoDireccion#UP} {@link MovimientoDireccion#DOWN}
      */
