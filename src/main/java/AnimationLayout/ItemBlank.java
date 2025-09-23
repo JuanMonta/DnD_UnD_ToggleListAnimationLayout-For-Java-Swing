@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 
 /**
- * Usado para crear un Item en blanco, al cual en esta clase se le asignará una
+ * Usado para crear un {@link Item} en blanco, al cual en esta clase se le asignará una
  * copia de su Item real como imagen para representarlo como duplicado, extiende
  * de {@link Item} para usar la mayoría de sus métodos.
  *
@@ -39,18 +39,16 @@ public abstract class ItemBlank extends Item {
     }
 
     /**
-     * Método que notifica al componente que haya extendido {@link ItemBlank}
-     * para crear un Item en blanco que la imagen de un componente ha sido
-     * creada.
+     * Notifica al componente que haya extendido {@link ItemBlank} que una
+     * imagen de un componente ha sido creada.
      *
      * @param imageIcon Imagen creada del componente.
      */
     public abstract void imageComponentCloned(ImageIcon imageIcon);
 
     /**
-     * Método que notifica al componente que haya extendido {@link ItemBlank}
-     * para crear un Item en blanco que la imagen de un componente ha sido
-     * creada.
+     * Notifica al componente que haya extendido {@link ItemBlank} que una
+     * imagen de un componente ha sido creada.
      *
      * @param imageBuff Imagen creada del componente.
      */

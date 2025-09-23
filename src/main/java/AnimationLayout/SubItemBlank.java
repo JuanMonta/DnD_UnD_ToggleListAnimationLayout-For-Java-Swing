@@ -5,13 +5,11 @@ import java.awt.Component;
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 
-
-
-
 /**
- * Usado para crear un SubItem en blanco, al cual en esta clase se le asignará
- * una copia de su SubItem real como imagen para representarlo como duplicado,
- * extiende de {@link Item.SubItem} para usar la mayoría de sus métodos.
+ * Usado para crear un {@link Item.SubItem} en blanco, al cual en esta clase se
+ * le asignará una copia de su SubItem real como imagen para representarlo como
+ * duplicado, extiende de {@link Item.SubItem} para usar la mayoría de sus
+ * métodos.
  *
  */
 public abstract class SubItemBlank extends Item.SubItem {
@@ -42,25 +40,24 @@ public abstract class SubItemBlank extends Item.SubItem {
     }
 
     /**
-     * Método que notifica al componente que haya extendido {@link ItemBlank}
-     * para crear un Item en blanco que la imagen de un componente ha sido
-     * creada.
+     * Notifica al componente que haya extendido {@link SubItemBlank} que una
+     * imagen de un componente ha sido creada.
      *
      * @param imageIcon Imagen creada del componente.
      */
     public abstract void imageComponentCloned(ImageIcon imageIcon);
 
     /**
-     * Método que notifica al componente que haya extendido {@link ItemBlank}
-     * para crear un Item en blanco que la imagen de un componente ha sido
-     * creada.
+     * Notifica al componente que haya extendido {@link SubItemBlank} que una
+     * imagen de un componente ha sido creada.
      *
      * @param imageBuff Imagen creada del componente.
      */
     public void imageComponentCloned(BufferedImage imageBuff) {
 
     }
-     public String toString() {
+
+    public String toString() {
         return "SubItemBlank" + "( )";
     }
 }
