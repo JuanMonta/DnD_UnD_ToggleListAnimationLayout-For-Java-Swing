@@ -34,8 +34,14 @@ public class ToggleListAnimationLayout extends JComponent implements Serializabl
      */
     private final SubItem_BlankComponent subItem_Blank;
     //para asignar el tiempo de animacion para los items y subItems
-    private int itemDragAndDropAnimationTime = 0;
-    private int subItemDragAndDropAnimationTime = 0;
+    private int itemDragAndDropAnimationTime = 3000;
+    private int subItemDragAndDropAnimationTime = 2000;
+
+    private int itemUpDownAnimationTime = 3000;
+    private int subItemUpDownAnimationTime = 2000;
+    
+    private int itemDeleteAnimationTime = 2000;
+    private int subItemDeleteAnimationTime = 2000;
 
     public ToggleListAnimationLayout() {
         init();
@@ -120,7 +126,12 @@ public class ToggleListAnimationLayout extends JComponent implements Serializabl
      * @param milis tiempo en milisegundos.
      */
     public void setItemUpDownAnimationTime(int milis) {
+        this.itemUpDownAnimationTime = milis;
         this.listaManipulador.setRedimensionItemAnimationTime(milis);
+    }
+
+    public int getItemUpDownAnimationTime() {
+        return this.itemUpDownAnimationTime;
     }
 
     /**
@@ -131,7 +142,12 @@ public class ToggleListAnimationLayout extends JComponent implements Serializabl
      * @param milis tiempo en milisegundos.
      */
     public void setSubItemUpDownAnimationTime(int milis) {
+        this.subItemUpDownAnimationTime = milis;
         this.listaManipulador.setRedimensionSubItemAnimationTime(milis);
+    }
+
+    public int getSubItemUpDownAnimationTime() {
+        return this.subItemUpDownAnimationTime;
     }
 
     /**
@@ -142,7 +158,12 @@ public class ToggleListAnimationLayout extends JComponent implements Serializabl
      * @param milis tiempo en milisegundos.
      */
     public void setItemDeleteAnimationTime(int milis) {
+        this.itemDeleteAnimationTime =  milis;
         this.listaManipulador.setEliminacionItemAnimationTime(milis);
+    }
+
+    public int getItemDeleteAnimationTime() {
+        return this.itemDeleteAnimationTime;
     }
 
     /**
@@ -154,6 +175,10 @@ public class ToggleListAnimationLayout extends JComponent implements Serializabl
      */
     public void setSubItemDeleteAnimationTime(int milis) {
         this.listaManipulador.setEliminacionSubItemAnimationTime(milis);
+    }
+
+    public int getSubItemDeleteAnimationTime() {
+        return this.subItemDeleteAnimationTime;
     }
 
     /**
@@ -170,6 +195,10 @@ public class ToggleListAnimationLayout extends JComponent implements Serializabl
         for (Item item : this.getListaItems()) {
             item.setDragAndDropAnimationTime(milis);
         }
+    }
+
+    public synchronized int getItemDragAndDropAnimationTime() {
+        return itemDragAndDropAnimationTime;
     }
 
     /**
@@ -189,6 +218,10 @@ public class ToggleListAnimationLayout extends JComponent implements Serializabl
                 }
             }
         }
+    }
+
+    public synchronized int getSubItemDragAndDropAnimationTime() {
+        return this.subItemDragAndDropAnimationTime;
     }
 
     /**
@@ -278,8 +311,9 @@ public class ToggleListAnimationLayout extends JComponent implements Serializabl
     }
     //==========================================================================
     /**
-     * Listener que se activa desde la clase {@link Item} y {@link Item.SubItem}, que servirá
-     * para realizar la animación y eliminacion de un {@link Item} o {@link Item.SubItem} del layout.
+     * Listener que se activa desde la clase {@link Item} y
+     * {@link Item.SubItem}, que servirá para realizar la animación y
+     * eliminacion de un {@link Item} o {@link Item.SubItem} del layout.
      */
     private final UnD_EliminacionListener eliminacionListener = new UnD_EliminacionListener() {
         @Override
@@ -329,9 +363,9 @@ public class ToggleListAnimationLayout extends JComponent implements Serializabl
     };
 
     /**
-     * Se coloca la clase {@link UnD_EliminacionListener} en cada uno de los {@link Item} y
-     * {@link Item.SubItem}, que ayudará con la eliminación de los Items y SubItems del
-     * layout.
+     * Se coloca la clase {@link UnD_EliminacionListener} en cada uno de los
+     * {@link Item} y {@link Item.SubItem}, que ayudará con la eliminación de
+     * los Items y SubItems del layout.
      *
      * @param listener {@link UnD_EliminacionListener} tw
      */
@@ -352,8 +386,8 @@ public class ToggleListAnimationLayout extends JComponent implements Serializabl
 
     //==========================================================================
     /**
-     * Colocar todos los componentes {@link Item} y {@link Item.SubItem} en el layout en el orden
-     * de la lista.
+     * Colocar todos los componentes {@link Item} y {@link Item.SubItem} en el
+     * layout en el orden de la lista.
      *
      * @param items lista ordenada de {@link Item} y {@link Item.SubItem}.
      */
@@ -376,11 +410,13 @@ public class ToggleListAnimationLayout extends JComponent implements Serializabl
         removeAll();
         this.render(items);
     }
+
     /**
      * Para ir agregando los {@link Item} y {@link Item.SubItem} en el layout.
+     *
      * @param items lista de Items.
      */
-    private synchronized void render(List<Item> items){
+    private synchronized void render(List<Item> items) {
         for (int i = 0; i < items.size(); i++) {
             Item item = items.get(i);
             item.setMovimientoListener(movimientoListener);
