@@ -157,7 +157,7 @@ public abstract class Item extends JPanel implements DnD_AnimationTimeCurrentVal
     /**
      * Clase donde se manejan los {@link Item} y {@link Item.SubItem}
      */
-    private static ToggleListAnimationLayout toggleListLayout;
+    private ToggleListAnimationLayout toggleListLayout;
 
     /**
      * Obtener la clase donde se manejan los {@link Item} y
@@ -169,7 +169,7 @@ public abstract class Item extends JPanel implements DnD_AnimationTimeCurrentVal
      * @return instancia de {@link ToggleListAnimationLayout}
      */
     ToggleListAnimationLayout getToggleListLayout() {
-        return Item.toggleListLayout;
+        return this.toggleListLayout;
     }
 
     /**
@@ -209,6 +209,10 @@ public abstract class Item extends JPanel implements DnD_AnimationTimeCurrentVal
      */
     public synchronized void addSubItem(Item.SubItem subItem) {
         subItem.setSubItemIndex(this.subItemsList.size());
+        //Si el Item ya tiene un layout, se lo inyecta al nuevo subítem
+        if (this.toggleListLayout != null) {
+            subItem.setToggleListLayout(this.toggleListLayout);
+        }
         this.subItemsList.add(subItem);
         this.subItemAdded(subItem);
         subItem.onAdded();
@@ -397,13 +401,21 @@ public abstract class Item extends JPanel implements DnD_AnimationTimeCurrentVal
      * @param toggleListLayout se le pasa el {@link ToggleListAnimationLayout}
      */
     void setToggleListLayout(ToggleListAnimationLayout toggleListLayout) {
-        Item.toggleListLayout = toggleListLayout;
+        this.toggleListLayout = toggleListLayout;
         getToggleList().addToggleListListener(new ToggleListAdapter() {
             @Override
             public void onAnimated(float animated) {
                 show(getSubItems(), animated, getToggleList().isShowing());
             }
         });
+        // Pasarle el layout a los subítems que ya estén agregados
+        if (this.subItemsList != null) {
+            for (java.awt.Component comp : this.subItemsList) {
+                if (comp instanceof Item.SubItem subItem) {
+                    subItem.setToggleListLayout(toggleListLayout);
+                }
+            }
+        }
     }
 
     public String toString() {
@@ -431,6 +443,8 @@ public abstract class Item extends JPanel implements DnD_AnimationTimeCurrentVal
         private UnD_EliminacionListener eliminacionListener;
         private final DnD_Activar itemDragAndDropActivar;
 
+        private ToggleListAnimationLayout toggleListLayout;
+
         public SubItem() {
             this.itemDragAndDropActivar = new DnD_Activar(Item.SubItem.this, this);
         }
@@ -445,7 +459,11 @@ public abstract class Item extends JPanel implements DnD_AnimationTimeCurrentVal
          * @return
          */
         ToggleListAnimationLayout getToggleListLayout() {
-            return Item.toggleListLayout;
+            return this.toggleListLayout;
+        }
+
+        void setToggleListLayout(ToggleListAnimationLayout toggleListLayout) {
+            this.toggleListLayout = toggleListLayout;
         }
 
         //##########################################################################
